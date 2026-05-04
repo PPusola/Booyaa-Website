@@ -166,6 +166,7 @@ export default function PrivacyPage() {
               <p className="font-bold text-green-400 mb-4">Company</p>
               <ul className="text-sm space-y-2 text-green-300">
                 <li><a href="/about" className="hover:text-green-300 transition">About</a></li>
+                <li><a href="/quote" className="hover:text-green-300 transition">Get a Quote</a></li>
               </ul>
             </div>
             <div>

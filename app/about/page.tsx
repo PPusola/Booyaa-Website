@@ -1,6 +1,9 @@
 "use client";
 
+import { useState } from "react";
+
 export default function AboutPage() {
+  const [teamExpanded, setTeamExpanded] = useState(false);
   return (
     <main className="min-h-screen bg-black text-green-400">
       <header className="sticky top-0 z-50 border-b border-green-500/30 bg-black/80 backdrop-blur-xl">
@@ -90,66 +93,78 @@ export default function AboutPage() {
       <section className="px-6 py-24 sm:px-10 md:px-12 bg-gradient-to-r from-gray-900 to-black">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-4xl font-bold text-green-400 mb-12">The Team</h2>
-          <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-10 md:p-12">
-            <div className="flex flex-col md:flex-row items-start gap-8">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-black font-bold text-2xl flex-shrink-0">PP</div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-green-400">Priyanshu Pusola</h3>
-                <p className="text-green-300 font-semibold mt-1">Founder & Full-Stack Developer</p>
+          <button
+            onClick={() => setTeamExpanded(!teamExpanded)}
+            className="w-full text-left rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 md:p-10 hover:shadow-lg hover:shadow-green-500/20 transition group"
+          >
+            <div className="flex items-center justify-between gap-6">
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-black font-bold text-xl flex-shrink-0">PP</div>
+                <div>
+                  <h3 className="text-xl font-bold text-green-400">Priyanshu Pusola</h3>
+                  <p className="text-green-300 text-sm mt-0.5">Founder & Full-Stack Developer</p>
+                </div>
+              </div>
+              <div className={`w-8 h-8 rounded-full border border-green-500/40 flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${teamExpanded ? "rotate-180" : ""}`}>
+                <svg className="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
 
-                <div className="mt-6 space-y-4">
+            {teamExpanded && (
+              <div className="mt-8 pt-8 border-t border-green-500/20" onClick={(e) => e.stopPropagation()}>
+                <div className="space-y-6">
                   <div>
-                    <p className="text-sm uppercase tracking-widest text-green-500 font-bold mb-2">Education</p>
-                    <p className="text-green-300 leading-7">
+                    <p className="text-xs uppercase tracking-widest text-green-500 font-bold mb-2">Education</p>
+                    <p className="text-green-300 leading-7 text-sm">
                       Bachelor of Computer Science, Minor in Economics — University of Alberta (Sep 2021 – Dec 2025). Recipient of the UAlberta International Country Scholarship and International Student Scholarship; Attendee, ODSC Agentic AI Conference 2025.
                     </p>
                   </div>
 
                   <div>
-                    <p className="text-sm uppercase tracking-widest text-green-500 font-bold mb-2">Experience</p>
-                    <div className="space-y-3 text-green-300 leading-7">
+                    <p className="text-xs uppercase tracking-widest text-green-500 font-bold mb-3">Experience</p>
+                    <div className="space-y-4 text-green-300 leading-7">
                       <div>
-                        <span className="font-semibold text-green-400">Functional Safety Co-op — BlackBerry QNX</span>
-                        <span className="text-green-500 text-sm ml-2">(May – Aug 2024)</span>
-                        <p className="mt-1 text-sm">Authored C standard library functional tests for QNX RTOS targeting ARM, x86, and x64 architectures. Designed test flag annotations integrated with the regression pipeline. Participated in daily cross-timezone standups coordinating issue triage, following full Agile/SCRUM cycles with senior code review in C, Python (FastAPI), Vim, and JIRA.</p>
+                        <p className="font-semibold text-green-400 text-sm">Functional Safety Co-op — BlackBerry QNX <span className="text-green-500 font-normal">(May – Aug 2024)</span></p>
+                        <p className="mt-1 text-sm">Authored C standard library functional tests for QNX RTOS targeting ARM, x86, and x64 architectures. Designed test flag annotations integrated with the regression pipeline. Participated in daily cross-timezone standups following full Agile/SCRUM cycles with senior code review in C, Python (FastAPI), Vim, and JIRA.</p>
                       </div>
                       <div>
-                        <span className="font-semibold text-green-400">Software Developer Intern — Newgen Software</span>
-                        <span className="text-green-500 text-sm ml-2">(June – Aug 2023)</span>
-                        <p className="mt-1 text-sm">Fine-tuned GPT-3.5 using LlamaIndex Vector Store, achieving a 25% improvement in model accuracy and 10% faster response times. Built a multimodal Gradio app supporting audio and image uploads to extract meeting notes and itemize receipts. Collaborated through the full build cycle with iterative senior code reviews enforcing SDLC best practices.</p>
+                        <p className="font-semibold text-green-400 text-sm">Software Developer Intern — Newgen Software <span className="text-green-500 font-normal">(June – Aug 2023)</span></p>
+                        <p className="mt-1 text-sm">Fine-tuned GPT-3.5 using LlamaIndex Vector Store, achieving a 25% improvement in model accuracy and 10% faster response times. Built a multimodal Gradio app for meeting note extraction and receipt itemization. Collaborated through the full build cycle with iterative senior code reviews enforcing SDLC best practices.</p>
                       </div>
                     </div>
                   </div>
 
                   <div>
-                    <p className="text-sm uppercase tracking-widest text-green-500 font-bold mb-2">Notable Projects</p>
+                    <p className="text-xs uppercase tracking-widest text-green-500 font-bold mb-3">Notable Projects</p>
                     <div className="space-y-2 text-green-300 text-sm leading-7">
-                      <div><span className="font-semibold text-green-400">SpotifyJamSesh</span> — Real-time music sync app using React Native (Expo), Spotify Web API, Firebase Realtime DB, and OAuth 2.0. Implements drift-correction engine maintaining &lt;2s sync tolerance.</div>
-                      <div><span className="font-semibold text-green-400">Cyan</span> — Distributed social network in Django and React.js with ActivityPub-inspired inbox push model across independent Heroku nodes. 15+ RESTful API endpoints with full pagination.</div>
-                      <div><span className="font-semibold text-green-400">Cobra Chickens</span> — Android event app in Java with custom QR codes, Firebase Firestore check-ins, Cloud Messaging push notifications, and Google Maps integration.</div>
-                      <div><span className="font-semibold text-green-400">Energy Insights</span> — Python/R data pipeline ingesting CER, EIA, and CANSIM datasets with time-series analysis on WTI, Brent, AECO, and Henry Hub pricing.</div>
+                      <p><span className="font-semibold text-green-400">SpotifyJamSesh</span> — Real-time music sync app using React Native (Expo), Spotify Web API, Firebase Realtime DB, and OAuth 2.0. Implements drift-correction engine maintaining &lt;2s sync tolerance.</p>
+                      <p><span className="font-semibold text-green-400">Cyan</span> — Distributed social network in Django and React.js with ActivityPub-inspired inbox push model across independent Heroku nodes. 15+ RESTful API endpoints with full pagination.</p>
+                      <p><span className="font-semibold text-green-400">Cobra Chickens</span> — Android event app in Java with custom QR codes, Firebase Firestore check-ins, Cloud Messaging push notifications, and Google Maps integration.</p>
+                      <p><span className="font-semibold text-green-400">Energy Insights</span> — Python/R data pipeline ingesting CER, EIA, and CANSIM datasets with time-series analysis on WTI, Brent, AECO, and Henry Hub pricing.</p>
                     </div>
                   </div>
 
                   <div>
-                    <p className="text-sm uppercase tracking-widest text-green-500 font-bold mb-2">Skills</p>
-                    <div className="flex flex-wrap gap-2 mt-1">
+                    <p className="text-xs uppercase tracking-widest text-green-500 font-bold mb-3">Skills</p>
+                    <div className="flex flex-wrap gap-2">
                       {["Python", "JavaScript", "Java", "C", "SQL", "React.js", "React Native", "Next.js", "Django", "Node.js", "Firebase", "Docker", "Git", "REST APIs", "Agile/SCRUM"].map((skill) => (
                         <span key={skill} className="rounded-full border border-green-500/40 bg-green-900/20 px-3 py-1 text-xs text-green-300 font-medium">{skill}</span>
                       ))}
                     </div>
                   </div>
-                </div>
 
-                <div className="flex gap-6 mt-8">
-                  <a href="https://linkedin.com/in/priyanshu-pusola" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition text-sm border-b border-green-500/40 hover:border-green-300 pb-0.5">LinkedIn</a>
-                  <a href="https://github.com/Ironical-Suburb" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition text-sm border-b border-green-500/40 hover:border-green-300 pb-0.5">GitHub</a>
-                  <a href="https://ironical-suburb.github.io" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition text-sm border-b border-green-500/40 hover:border-green-300 pb-0.5">Portfolio</a>
-                  <a href="mailto:priyanshu@booyaa.net" className="text-green-400 hover:text-green-300 font-semibold transition text-sm border-b border-green-500/40 hover:border-green-300 pb-0.5">Email</a>
+                  <div className="flex flex-wrap gap-6 pt-2">
+                    <a href="https://linkedin.com/in/priyanshu-pusola" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition text-sm border-b border-green-500/40 hover:border-green-300 pb-0.5">LinkedIn</a>
+                    <a href="https://github.com/Ironical-Suburb" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition text-sm border-b border-green-500/40 hover:border-green-300 pb-0.5">GitHub</a>
+                    <a href="https://ironical-suburb.github.io" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition text-sm border-b border-green-500/40 hover:border-green-300 pb-0.5">Portfolio</a>
+                    <a href="mailto:priyanshu@booyaa.net" className="text-green-400 hover:text-green-300 font-semibold transition text-sm border-b border-green-500/40 hover:border-green-300 pb-0.5">Email</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            )}
+          </button>
         </div>
       </section>
 
@@ -227,6 +242,7 @@ export default function AboutPage() {
               <p className="font-bold text-green-400 mb-4">Company</p>
               <ul className="text-sm space-y-2 text-green-300">
                 <li><a href="/about" className="hover:text-green-300 transition">About</a></li>
+                <li><a href="/quote" className="hover:text-green-300 transition">Get a Quote</a></li>
               </ul>
             </div>
             <div>

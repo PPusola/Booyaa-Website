@@ -11,6 +11,7 @@ export default function Home() {
             <a href="/features" className="transition hover:text-green-300 hover:font-semibold">Features</a>
             <a href="/about" className="transition hover:text-green-300 hover:font-semibold">About</a>
             <a href="/download" className="transition hover:text-green-300 hover:font-semibold">Download</a>
+            <a href="/quote" className="rounded-full border border-green-500 px-4 py-1.5 text-sm font-semibold text-green-400 transition hover:bg-green-500/10 hover:text-green-300">Get a Quote</a>
           </nav>
         </div>
       </header>
@@ -39,8 +40,8 @@ export default function Home() {
                 >
                   View Our Work
                 </a>
-                <a href="#contact" className="inline-flex w-full justify-center rounded-full border-2 border-green-500 px-8 py-4 text-base text-green-400 transition hover:border-green-400 hover:text-green-300 hover:bg-green-500/10 sm:w-auto font-semibold">
-                  Start a Project
+                <a href="/quote" className="inline-flex w-full justify-center rounded-full border-2 border-green-500 px-8 py-4 text-base text-green-400 transition hover:border-green-400 hover:text-green-300 hover:bg-green-500/10 sm:w-auto font-semibold">
+                  Get a Quote
                 </a>
               </div>
             </div>
@@ -158,6 +159,7 @@ export default function Home() {
               <p className="font-bold text-green-400 mb-4">Company</p>
               <ul className="text-sm space-y-2 text-green-300">
                 <li><a href="/about" className="hover:text-green-300 transition">About</a></li>
+                <li><a href="/quote" className="hover:text-green-300 transition">Get a Quote</a></li>
               </ul>
             </div>
             <div>
