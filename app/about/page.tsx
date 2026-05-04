@@ -165,19 +165,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:shadow-xl hover:-translate-y-1 sm:w-auto"
-            >
-              Get in Touch
-            </a>
-            <a 
-              href="/"
-              className="inline-flex items-center justify-center rounded-full border-2 border-slate-300 px-8 py-4 text-base text-slate-700 transition hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 sm:w-auto font-semibold"
-            >
-              Back to Home
-            </a>
-          </div>
-        </div>
-      </section>
 
       <footer className="border-t border-green-500/30 px-6 py-12 text-green-400 sm:px-10">
         <div className="mx-auto max-w-6xl">
