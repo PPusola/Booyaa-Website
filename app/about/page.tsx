@@ -2,14 +2,14 @@
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 text-slate-900">
-      <header className="sticky top-0 z-50 border-b border-white/30 bg-white/80 backdrop-blur-xl">
+    <main className="min-h-screen bg-black text-green-400">
+      <header className="sticky top-0 z-50 border-b border-green-500/30 bg-black/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
-          <a href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Booyaa</a>
-          <nav className="hidden items-center gap-8 text-sm text-slate-600 md:flex">
-            <a href="/#products" className="transition hover:text-blue-600">Products</a>
-            <a href="/#features" className="transition hover:text-blue-600">Features</a>
-            <a href="/about" className="transition hover:text-blue-600 font-semibold text-blue-600">About</a>
+          <a href="/" className="text-2xl font-bold bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">Booyaa</a>
+          <nav className="hidden items-center gap-8 text-sm text-green-400 md:flex">
+            <a href="/#products" className="transition hover:text-green-300">Products</a>
+            <a href="/#features" className="transition hover:text-green-300">Features</a>
+            <a href="/about" className="transition hover:text-green-300 font-semibold text-green-300">About</a>
           </nav>
         </div>
       </header>
@@ -17,32 +17,32 @@ export default function AboutPage() {
       <section className="px-6 py-24 sm:px-10 md:px-12">
         <div className="mx-auto max-w-4xl">
           <div className="mb-16">
-            <p className="text-sm uppercase tracking-[0.24em] text-blue-600 font-bold">About us</p>
-            <h1 className="mt-4 text-5xl sm:text-6xl font-bold text-slate-900 leading-tight">
-              Connecting people through shared moments
+            <p className="text-sm uppercase tracking-[0.24em] text-green-400 font-bold">About us</p>
+            <h1 className="mt-4 text-5xl sm:text-6xl font-bold text-green-400 leading-tight">
+              Code that creates.<br/>Connects.<br/>Converts.
             </h1>
-            <p className="mt-6 text-xl text-slate-600 leading-8">
-              Booyaa is building the next generation of social apps. Apps that bring friends closer together through authentic connection — whether that's rediscovering cherished memories or vibing to music in real-time.
+            <p className="mt-6 text-xl text-green-300 leading-8">
+              Booyaa is a digital agency specializing in web development and mobile applications. We build stunning websites for businesses and create engaging apps that bring people together through authentic digital experiences.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="px-6 py-24 sm:px-10 md:px-12 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="px-6 py-24 sm:px-10 md:px-12 bg-gradient-to-r from-gray-900 to-black">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12">Our Story</h2>
-          <div className="space-y-6 text-lg text-slate-600 leading-8">
+          <h2 className="text-4xl font-bold text-green-400 mb-12">Our Story</h2>
+          <div className="space-y-6 text-lg text-green-300 leading-8">
             <p>
-              Booyaa was founded on a simple belief: social apps should bring people closer, not push them apart. In a world of endless scrolling and algorithmic feeds, we wanted to create spaces for genuine connection.
+              Booyaa started as a vision to bridge the gap between businesses and their digital presence. We believe that every business deserves a website that not only looks great but drives real results.
             </p>
             <p>
-              It started with a question: "What if you could challenge your friends with a shared memory?" That became PhotoSnap — an app where rediscovering old photos becomes a game, and competition brings laughter and nostalgia.
+              Our journey began with web development — creating custom websites that showcase brands and convert visitors into customers. We've built everything from professional service websites to e-commerce platforms, always focusing on user experience and performance.
             </p>
             <p>
-              Then came another idea: "What if listening to music together felt like being in the same room?" That's Spotify Jam Sesh — a real-time listening experience that turns music discovery into a social event.
+              As our expertise grew, so did our ambitions. We expanded into mobile app development, creating social apps that bring people together. PhotoSnap challenges friends with shared memories, while Spotify Jam Sesh creates real-time music listening experiences.
             </p>
             <p>
-              Every Booyaa app is built around one core principle: <span className="font-semibold text-slate-900">authentic connection through shared experiences</span>. No algorithms deciding what you see. No endless feeds. Just real moments with real people.
+              Today, Booyaa is a full-service digital agency: <span className="font-semibold text-green-400">building websites that work and apps that connect</span>. We combine technical expertise with creative vision to deliver digital solutions that make a difference.
             </p>
           </div>
         </div>
@@ -50,59 +50,59 @@ export default function AboutPage() {
 
       <section className="px-6 py-24 sm:px-10 md:px-12">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12">Our Values</h2>
+          <h2 className="text-4xl font-bold text-green-400 mb-12">Our Values</h2>
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="rounded-3xl border border-blue-100 bg-white p-8 hover:shadow-lg transition">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 text-white flex items-center justify-center text-2xl mb-4">💫</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Authenticity</h3>
-              <p className="text-slate-600 leading-7">
-                Real people, real conversations, real connections. We build for genuine moments, not engagement metrics.
+            <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 hover:shadow-lg hover:shadow-green-500/20 transition">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-black flex items-center justify-center text-2xl mb-4">💫</div>
+              <h3 className="text-2xl font-bold text-green-400 mb-3">Quality First</h3>
+              <p className="text-green-300 leading-7">
+                Every pixel, every line of code, every user interaction matters. We never compromise on quality or user experience.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-purple-100 bg-white p-8 hover:shadow-lg transition">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-purple-500 to-purple-600 text-white flex items-center justify-center text-2xl mb-4">🚀</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Innovation</h3>
-              <p className="text-slate-600 leading-7">
-                We're not afraid to try new ideas. Every feature is tested with one question: does this bring people closer?
+            <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 hover:shadow-lg hover:shadow-green-500/20 transition">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-black flex items-center justify-center text-2xl mb-4">🚀</div>
+              <h3 className="text-2xl font-bold text-green-400 mb-3">Innovation</h3>
+              <p className="text-green-300 leading-7">
+                We stay ahead of technology trends, using the latest tools and frameworks to build cutting-edge solutions.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-green-100 bg-white p-8 hover:shadow-lg transition">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-white flex items-center justify-center text-2xl mb-4">🔐</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Privacy First</h3>
-              <p className="text-slate-600 leading-7">
-                Your data is yours. We encrypt everything, track nothing, and never sell your information to anyone.
+            <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 hover:shadow-lg hover:shadow-green-500/20 transition">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-black flex items-center justify-center text-2xl mb-4">🔐</div>
+              <h3 className="text-2xl font-bold text-green-400 mb-3">Privacy & Security</h3>
+              <p className="text-green-300 leading-7">
+                Your data and your clients' data are protected. We implement industry-standard security practices in everything we build.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-orange-100 bg-white p-8 hover:shadow-lg transition">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 text-white flex items-center justify-center text-2xl mb-4">❤️</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Community</h3>
-              <p className="text-slate-600 leading-7">
-                We listen to our users. Every update, every feature, every decision is guided by what our community needs.
+            <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 hover:shadow-lg hover:shadow-green-500/20 transition">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-black flex items-center justify-center text-2xl mb-4">🤝</div>
+              <h3 className="text-2xl font-bold text-green-400 mb-3">Partnership</h3>
+              <p className="text-green-300 leading-7">
+                We work closely with our clients as partners, not just vendors. Your success is our success.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="px-6 py-24 sm:px-10 md:px-12 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="px-6 py-24 sm:px-10 md:px-12 bg-gradient-to-r from-gray-900 to-black">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12">The Team</h2>
-          <div className="rounded-3xl border border-blue-100 bg-white p-12">
+          <h2 className="text-4xl font-bold text-green-400 mb-12">The Team</h2>
+          <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-12">
             <div className="flex items-start gap-8">
-              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-400 to-purple-400 flex items-center justify-center text-4xl flex-shrink-0">👨‍💻</div>
+              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-4xl flex-shrink-0">👨‍💻</div>
               <div>
-                <h3 className="text-2xl font-bold text-slate-900">Priyanshu Pusola</h3>
-                <p className="text-blue-600 font-semibold mt-1">Founder & Developer</p>
-                <p className="text-slate-600 leading-7 mt-4">
-                  Computer Science student at the University of Alberta with a passion for building real-time applications and creating meaningful social experiences. Previously worked on functional safety systems at BlackBerry QNX and AI integration at Newgen Software. Building Booyaa to prove that social apps can be genuine, private, and fun.
+                <h3 className="text-2xl font-bold text-green-400">Priyanshu Pusola</h3>
+                <p className="text-green-300 font-semibold mt-1">Founder & Full-Stack Developer</p>
+                <p className="text-green-300 leading-7 mt-4">
+                  Computer Science student at the University of Alberta with expertise in web development and mobile applications. Experienced in React, Next.js, Node.js, and modern development practices. Previously worked on functional safety systems at BlackBerry QNX and AI integration at Newgen Software. Building Booyaa to deliver exceptional digital solutions for businesses and users alike.
                 </p>
                 <div className="flex gap-4 mt-6">
-                  <a href="https://linkedin.com/in/priyanshu-pusola" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 font-semibold transition">LinkedIn</a>
-                  <a href="https://github.com/Ironical-Suburb" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 font-semibold transition">GitHub</a>
-                  <a href="mailto:pusola@ualberta.ca" className="text-blue-600 hover:text-blue-700 font-semibold transition">Email</a>
+                  <a href="https://linkedin.com/in/priyanshu-pusola" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition">LinkedIn</a>
+                  <a href="https://github.com/Ironical-Suburb" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition">GitHub</a>
+                  <a href="mailto:priyanshu@booyaa.net" className="text-green-400 hover:text-green-300 font-semibold transition">Email</a>
                 </div>
               </div>
             </div>
@@ -112,42 +112,59 @@ export default function AboutPage() {
 
       <section className="px-6 py-24 sm:px-10 md:px-12">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12">What's Next</h2>
-          <div className="rounded-3xl border border-purple-100 bg-white p-12">
-            <p className="text-lg text-slate-600 leading-8 mb-6">
-              We're just getting started. Booyaa has big plans for the future:
+          <h2 className="text-4xl font-bold text-green-400 mb-12">What's Next</h2>
+          <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-12">
+            <p className="text-lg text-green-300 leading-8 mb-6">
+              We're growing fast. Here's what's coming next from Booyaa:
             </p>
-            <ul className="space-y-4 text-slate-600 leading-8">
+            <ul className="space-y-4 text-green-300 leading-8">
               <li className="flex items-start gap-4">
-                <span className="text-2xl text-purple-600 flex-shrink-0">→</span>
-                <span><span className="font-semibold text-slate-900">PhotoSnap 2.0</span> — Group challenges, custom scoring, community galleries</span>
+                <span className="text-2xl text-green-400 flex-shrink-0">→</span>
+                <span><span className="font-semibold text-green-400">Website Portfolio Expansion</span> — More client showcases and case studies</span>
               </li>
               <li className="flex items-start gap-4">
-                <span className="text-2xl text-purple-600 flex-shrink-0">→</span>
-                <span><span className="font-semibold text-slate-900">Jam Sesh Expansion</span> — Apple Music support, collaborative playlists, DJ mode</span>
+                <span className="text-2xl text-green-400 flex-shrink-0">→</span>
+                <span><span className="font-semibold text-green-400">PhotoSnap Launch</span> — Full app release with advanced features</span>
               </li>
               <li className="flex items-start gap-4">
-                <span className="text-2xl text-purple-600 flex-shrink-0">→</span>
-                <span><span className="font-semibold text-slate-900">New Apps</span> — We have three more app ideas in the pipeline, all focused on genuine human connection</span>
+                <span className="text-2xl text-green-400 flex-shrink-0">→</span>
+                <span><span className="font-semibold text-green-400">Spotify Jam Sesh</span> — Real-time music collaboration app</span>
               </li>
               <li className="flex items-start gap-4">
-                <span className="text-2xl text-purple-600 flex-shrink-0">→</span>
-                <span><span className="font-semibold text-slate-900">Global Expansion</span> — Launching in new markets with localized features and community events</span>
+                <span className="text-2xl text-green-400 flex-shrink-0">→</span>
+                <span><span className="font-semibold text-green-400">E-commerce Solutions</span> — Custom online stores and payment integration</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <span className="text-2xl text-green-400 flex-shrink-0">→</span>
+                <span><span className="font-semibold text-green-400">Team Growth</span> — Expanding our development team for bigger projects</span>
               </li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section className="px-6 py-24 sm:px-10 md:px-12 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="px-6 py-24 sm:px-10 md:px-12 bg-gradient-to-r from-gray-900 to-black">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-6">Join the Booyaa Community</h2>
-          <p className="text-xl text-slate-600 leading-8 mb-10">
-            Have questions? Want to collaborate? Just want to say hi? We'd love to hear from you.
+          <h2 className="text-4xl font-bold text-green-400 mb-6">Let's Build Something Together</h2>
+          <p className="text-xl text-green-300 leading-8 mb-10">
+            Ready to bring your digital vision to life? Whether it's a stunning website or an innovative app, we're here to help.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:justify-center">
-            <a 
-              href="mailto:pusola@ualberta.ca"
+            <a
+              href="mailto:priyanshu@booyaa.net"
+              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 text-base font-semibold text-black shadow-lg shadow-green-500/30 transition hover:shadow-xl hover:-translate-y-1 sm:w-auto"
+            >
+              Start a Project
+            </a>
+            <a
+              href="/"
+              className="inline-flex items-center justify-center rounded-full border-2 border-green-500 px-8 py-4 text-base text-green-400 transition hover:border-green-400 hover:text-green-300 hover:bg-green-500/10 sm:w-auto font-semibold"
+            >
+              Back to Home
+            </a>
+          </div>
+        </div>
+      </section>
               className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:shadow-xl hover:-translate-y-1 sm:w-auto"
             >
               Get in Touch
@@ -162,37 +179,37 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <footer className="border-t border-slate-200 px-6 py-12 text-slate-600 sm:px-10">
+      <footer className="border-t border-green-500/30 px-6 py-12 text-green-400 sm:px-10">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-12 md:grid-cols-4 mb-12">
             <div>
-              <p className="font-bold text-slate-900 mb-4">Booyaa</p>
-              <p className="text-sm">Social apps for friends, music, and memories.</p>
+              <p className="font-bold text-green-400 mb-4">Booyaa</p>
+              <p className="text-sm text-green-300">We build websites and apps for businesses and users.</p>
             </div>
             <div>
-              <p className="font-bold text-slate-900 mb-4">Products</p>
-              <ul className="text-sm space-y-2">
-                <li><a href="/photosnap" className="hover:text-blue-600 transition">PhotoSnap</a></li>
-                <li><a href="/spotify-jam-sesh" className="hover:text-blue-600 transition">Spotify Jam Sesh</a></li>
+              <p className="font-bold text-green-400 mb-4">Products</p>
+              <ul className="text-sm space-y-2 text-green-300">
+                <li><a href="/photosnap" className="hover:text-green-300 transition">PhotoSnap</a></li>
+                <li><a href="/spotify-jam-sesh" className="hover:text-green-300 transition">Spotify Jam Sesh</a></li>
               </ul>
             </div>
             <div>
-              <p className="font-bold text-slate-900 mb-4">Company</p>
-              <ul className="text-sm space-y-2">
-                <li><a href="/about" className="hover:text-blue-600 transition">About</a></li>
-                <li><a href="#" className="hover:text-blue-600 transition">Blog</a></li>
-                <li><a href="#" className="hover:text-blue-600 transition">Careers</a></li>
+              <p className="font-bold text-green-400 mb-4">Company</p>
+              <ul className="text-sm space-y-2 text-green-300">
+                <li><a href="/about" className="hover:text-green-300 transition">About</a></li>
+                <li><a href="#" className="hover:text-green-300 transition">Blog</a></li>
+                <li><a href="#" className="hover:text-green-300 transition">Careers</a></li>
               </ul>
             </div>
             <div>
-              <p className="font-bold text-slate-900 mb-4">Legal</p>
-              <ul className="text-sm space-y-2">
-                <li><a href="#" className="hover:text-blue-600 transition">Privacy</a></li>
-                <li><a href="#" className="hover:text-blue-600 transition">Terms</a></li>
+              <p className="font-bold text-green-400 mb-4">Legal</p>
+              <ul className="text-sm space-y-2 text-green-300">
+                <li><a href="#" className="hover:text-green-300 transition">Privacy</a></li>
+                <li><a href="#" className="hover:text-green-300 transition">Terms</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-slate-200 pt-8 text-sm text-center text-slate-500">
+          <div className="border-t border-green-500/30 pt-8 text-sm text-center text-greeneen-500">
             <p>© {new Date().getFullYear()} Booyaa. All rights reserved.</p>
           </div>
         </div>
