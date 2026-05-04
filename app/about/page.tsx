@@ -7,8 +7,8 @@ export default function AboutPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
           <a href="/" className="text-2xl font-bold bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">Booyaa</a>
           <nav className="hidden items-center gap-8 text-sm text-green-400 md:flex">
-            <a href="/#products" className="transition hover:text-green-300">Products</a>
-            <a href="/#features" className="transition hover:text-green-300">Features</a>
+            <a href="/products" className="transition hover:text-green-300">Products</a>
+            <a href="/features" className="transition hover:text-green-300">Features</a>
             <a href="/about" className="transition hover:text-green-300 font-semibold text-green-300">About</a>
           </nav>
         </div>
@@ -53,7 +53,7 @@ export default function AboutPage() {
           <h2 className="text-4xl font-bold text-green-400 mb-12">Our Values</h2>
           <div className="grid gap-8 md:grid-cols-2">
             <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 hover:shadow-lg hover:shadow-green-500/20 transition">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-black flex items-center justify-center text-2xl mb-4">💫</div>
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-black flex items-center justify-center font-bold text-sm mb-4">QF</div>
               <h3 className="text-2xl font-bold text-green-400 mb-3">Quality First</h3>
               <p className="text-green-300 leading-7">
                 Every pixel, every line of code, every user interaction matters. We never compromise on quality or user experience.
@@ -61,7 +61,7 @@ export default function AboutPage() {
             </div>
 
             <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 hover:shadow-lg hover:shadow-green-500/20 transition">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-black flex items-center justify-center text-2xl mb-4">🚀</div>
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-black flex items-center justify-center font-bold text-sm mb-4">IN</div>
               <h3 className="text-2xl font-bold text-green-400 mb-3">Innovation</h3>
               <p className="text-green-300 leading-7">
                 We stay ahead of technology trends, using the latest tools and frameworks to build cutting-edge solutions.
@@ -69,7 +69,7 @@ export default function AboutPage() {
             </div>
 
             <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 hover:shadow-lg hover:shadow-green-500/20 transition">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-black flex items-center justify-center text-2xl mb-4">🔐</div>
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-black flex items-center justify-center font-bold text-sm mb-4">PS</div>
               <h3 className="text-2xl font-bold text-green-400 mb-3">Privacy & Security</h3>
               <p className="text-green-300 leading-7">
                 Your data and your clients' data are protected. We implement industry-standard security practices in everything we build.
@@ -77,7 +77,7 @@ export default function AboutPage() {
             </div>
 
             <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 hover:shadow-lg hover:shadow-green-500/20 transition">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-black flex items-center justify-center text-2xl mb-4">🤝</div>
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-black flex items-center justify-center font-bold text-sm mb-4">PT</div>
               <h3 className="text-2xl font-bold text-green-400 mb-3">Partnership</h3>
               <p className="text-green-300 leading-7">
                 We work closely with our clients as partners, not just vendors. Your success is our success.
@@ -90,19 +90,62 @@ export default function AboutPage() {
       <section className="px-6 py-24 sm:px-10 md:px-12 bg-gradient-to-r from-gray-900 to-black">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-4xl font-bold text-green-400 mb-12">The Team</h2>
-          <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-12">
-            <div className="flex items-start gap-8">
-              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-4xl flex-shrink-0">👨‍💻</div>
-              <div>
+          <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-10 md:p-12">
+            <div className="flex flex-col md:flex-row items-start gap-8">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-black font-bold text-2xl flex-shrink-0">PP</div>
+              <div className="flex-1">
                 <h3 className="text-2xl font-bold text-green-400">Priyanshu Pusola</h3>
                 <p className="text-green-300 font-semibold mt-1">Founder & Full-Stack Developer</p>
-                <p className="text-green-300 leading-7 mt-4">
-                  Computer Science student at the University of Alberta with expertise in web development and mobile applications. Experienced in React, Next.js, Node.js, and modern development practices. Previously worked on functional safety systems at BlackBerry QNX and AI integration at Newgen Software. Building Booyaa to deliver exceptional digital solutions for businesses and users alike.
-                </p>
-                <div className="flex gap-4 mt-6">
-                  <a href="https://linkedin.com/in/priyanshu-pusola" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition">LinkedIn</a>
-                  <a href="https://github.com/Ironical-Suburb" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition">GitHub</a>
-                  <a href="mailto:priyanshu@booyaa.net" className="text-green-400 hover:text-green-300 font-semibold transition">Email</a>
+
+                <div className="mt-6 space-y-4">
+                  <div>
+                    <p className="text-sm uppercase tracking-widest text-green-500 font-bold mb-2">Education</p>
+                    <p className="text-green-300 leading-7">
+                      Bachelor of Computer Science, Minor in Economics — University of Alberta (Sep 2021 – Dec 2025). Recipient of the UAlberta International Country Scholarship and International Student Scholarship; Attendee, ODSC Agentic AI Conference 2025.
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-sm uppercase tracking-widest text-green-500 font-bold mb-2">Experience</p>
+                    <div className="space-y-3 text-green-300 leading-7">
+                      <div>
+                        <span className="font-semibold text-green-400">Functional Safety Co-op — BlackBerry QNX</span>
+                        <span className="text-green-500 text-sm ml-2">(May – Aug 2024)</span>
+                        <p className="mt-1 text-sm">Authored C standard library functional tests for QNX RTOS targeting ARM, x86, and x64 architectures. Designed test flag annotations integrated with the regression pipeline. Participated in daily cross-timezone standups coordinating issue triage, following full Agile/SCRUM cycles with senior code review in C, Python (FastAPI), Vim, and JIRA.</p>
+                      </div>
+                      <div>
+                        <span className="font-semibold text-green-400">Software Developer Intern — Newgen Software</span>
+                        <span className="text-green-500 text-sm ml-2">(June – Aug 2023)</span>
+                        <p className="mt-1 text-sm">Fine-tuned GPT-3.5 using LlamaIndex Vector Store, achieving a 25% improvement in model accuracy and 10% faster response times. Built a multimodal Gradio app supporting audio and image uploads to extract meeting notes and itemize receipts. Collaborated through the full build cycle with iterative senior code reviews enforcing SDLC best practices.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-sm uppercase tracking-widest text-green-500 font-bold mb-2">Notable Projects</p>
+                    <div className="space-y-2 text-green-300 text-sm leading-7">
+                      <div><span className="font-semibold text-green-400">SpotifyJamSesh</span> — Real-time music sync app using React Native (Expo), Spotify Web API, Firebase Realtime DB, and OAuth 2.0. Implements drift-correction engine maintaining &lt;2s sync tolerance.</div>
+                      <div><span className="font-semibold text-green-400">Cyan</span> — Distributed social network in Django and React.js with ActivityPub-inspired inbox push model across independent Heroku nodes. 15+ RESTful API endpoints with full pagination.</div>
+                      <div><span className="font-semibold text-green-400">Cobra Chickens</span> — Android event app in Java with custom QR codes, Firebase Firestore check-ins, Cloud Messaging push notifications, and Google Maps integration.</div>
+                      <div><span className="font-semibold text-green-400">Energy Insights</span> — Python/R data pipeline ingesting CER, EIA, and CANSIM datasets with time-series analysis on WTI, Brent, AECO, and Henry Hub pricing.</div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-sm uppercase tracking-widest text-green-500 font-bold mb-2">Skills</p>
+                    <div className="flex flex-wrap gap-2 mt-1">
+                      {["Python", "JavaScript", "Java", "C", "SQL", "React.js", "React Native", "Next.js", "Django", "Node.js", "Firebase", "Docker", "Git", "REST APIs", "Agile/SCRUM"].map((skill) => (
+                        <span key={skill} className="rounded-full border border-green-500/40 bg-green-900/20 px-3 py-1 text-xs text-green-300 font-medium">{skill}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 mt-8">
+                  <a href="https://linkedin.com/in/priyanshu-pusola" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition text-sm border-b border-green-500/40 hover:border-green-300 pb-0.5">LinkedIn</a>
+                  <a href="https://github.com/Ironical-Suburb" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition text-sm border-b border-green-500/40 hover:border-green-300 pb-0.5">GitHub</a>
+                  <a href="https://ironical-suburb.github.io" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 font-semibold transition text-sm border-b border-green-500/40 hover:border-green-300 pb-0.5">Portfolio</a>
+                  <a href="mailto:priyanshu@booyaa.net" className="text-green-400 hover:text-green-300 font-semibold transition text-sm border-b border-green-500/40 hover:border-green-300 pb-0.5">Email</a>
                 </div>
               </div>
             </div>
@@ -113,29 +156,29 @@ export default function AboutPage() {
       <section className="px-6 py-24 sm:px-10 md:px-12">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-4xl font-bold text-green-400 mb-12">What's Next</h2>
-          <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-12">
+          <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-10 md:p-12">
             <p className="text-lg text-green-300 leading-8 mb-6">
               We're growing fast. Here's what's coming next from Booyaa:
             </p>
             <ul className="space-y-4 text-green-300 leading-8">
               <li className="flex items-start gap-4">
-                <span className="text-2xl text-green-400 flex-shrink-0">→</span>
+                <span className="text-green-400 flex-shrink-0 font-bold mt-0.5">—</span>
                 <span><span className="font-semibold text-green-400">Website Portfolio Expansion</span> — More client showcases and case studies</span>
               </li>
               <li className="flex items-start gap-4">
-                <span className="text-2xl text-green-400 flex-shrink-0">→</span>
+                <span className="text-green-400 flex-shrink-0 font-bold mt-0.5">—</span>
                 <span><span className="font-semibold text-green-400">PhotoSnap Launch</span> — Full app release with advanced features</span>
               </li>
               <li className="flex items-start gap-4">
-                <span className="text-2xl text-green-400 flex-shrink-0">→</span>
+                <span className="text-green-400 flex-shrink-0 font-bold mt-0.5">—</span>
                 <span><span className="font-semibold text-green-400">Spotify Jam Sesh</span> — Real-time music collaboration app</span>
               </li>
               <li className="flex items-start gap-4">
-                <span className="text-2xl text-green-400 flex-shrink-0">→</span>
+                <span className="text-green-400 flex-shrink-0 font-bold mt-0.5">—</span>
                 <span><span className="font-semibold text-green-400">E-commerce Solutions</span> — Custom online stores and payment integration</span>
               </li>
               <li className="flex items-start gap-4">
-                <span className="text-2xl text-green-400 flex-shrink-0">→</span>
+                <span className="text-green-400 flex-shrink-0 font-bold mt-0.5">—</span>
                 <span><span className="font-semibold text-green-400">Team Growth</span> — Expanding our development team for bigger projects</span>
               </li>
             </ul>
@@ -184,19 +227,17 @@ export default function AboutPage() {
               <p className="font-bold text-green-400 mb-4">Company</p>
               <ul className="text-sm space-y-2 text-green-300">
                 <li><a href="/about" className="hover:text-green-300 transition">About</a></li>
-                <li><a href="#" className="hover:text-green-300 transition">Blog</a></li>
-                <li><a href="#" className="hover:text-green-300 transition">Careers</a></li>
               </ul>
             </div>
             <div>
               <p className="font-bold text-green-400 mb-4">Legal</p>
               <ul className="text-sm space-y-2 text-green-300">
-                <li><a href="#" className="hover:text-green-300 transition">Privacy</a></li>
-                <li><a href="#" className="hover:text-green-300 transition">Terms</a></li>
+                <li><a href="/privacy" className="hover:text-green-300 transition">Privacy</a></li>
+                <li><a href="/terms" className="hover:text-green-300 transition">Terms</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-green-500/30 pt-8 text-sm text-center text-greeneen-500">
+          <div className="border-t border-green-500/30 pt-8 text-sm text-center text-green-500">
             <p>© {new Date().getFullYear()} Booyaa. All rights reserved.</p>
           </div>
         </div>

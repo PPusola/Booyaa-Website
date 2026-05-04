@@ -28,37 +28,37 @@ export default function Features() {
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-1 duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black text-2xl mb-6">🌐</div>
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black font-bold text-xs mb-6">WEB</div>
               <h3 className="text-xl font-bold text-green-400 mb-3">Web Development</h3>
               <p className="text-green-300 leading-7">Modern, responsive websites built with Next.js, React, and Tailwind CSS for superior performance.</p>
             </div>
 
             <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-1 duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black text-2xl mb-6">📱</div>
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black font-bold text-xs mb-6">APP</div>
               <h3 className="text-xl font-bold text-green-400 mb-3">Mobile Apps</h3>
               <p className="text-green-300 leading-7">Native iOS and Android apps built with Expo and React Native for seamless cross-platform experiences.</p>
             </div>
 
             <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-1 duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black text-2xl mb-6">⚡</div>
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black font-bold text-xs mb-6">PERF</div>
               <h3 className="text-xl font-bold text-green-400 mb-3">Performance First</h3>
               <p className="text-green-300 leading-7">Lightning-fast load times and smooth interactions powered by modern architecture and optimization.</p>
             </div>
 
             <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-1 duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black text-2xl mb-6">🔐</div>
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black font-bold text-xs mb-6">SEC</div>
               <h3 className="text-xl font-bold text-green-400 mb-3">Secure & Scalable</h3>
               <p className="text-green-300 leading-7">Enterprise-grade security with scalable infrastructure to grow with your business needs.</p>
             </div>
 
             <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-1 duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black text-2xl mb-6">🎨</div>
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black font-bold text-xs mb-6">UX</div>
               <h3 className="text-xl font-bold text-green-400 mb-3">Beautiful Design</h3>
               <p className="text-green-300 leading-7">User-centric designs that are visually stunning and intuitive across all devices.</p>
             </div>
 
             <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-1 duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black text-2xl mb-6">🚀</div>
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black font-bold text-xs mb-6">SUP</div>
               <h3 className="text-xl font-bold text-green-400 mb-3">Full Support</h3>
               <p className="text-green-300 leading-7">From concept to launch and beyond, we provide continuous support and iterative improvements.</p>
             </div>
@@ -84,15 +84,13 @@ export default function Features() {
               <p className="font-bold text-green-400 mb-4">Company</p>
               <ul className="text-sm space-y-2 text-green-300">
                 <li><a href="/about" className="hover:text-green-300 transition">About</a></li>
-                <li><a href="#" className="hover:text-green-300 transition">Blog</a></li>
-                <li><a href="#" className="hover:text-green-300 transition">Careers</a></li>
               </ul>
             </div>
             <div>
               <p className="font-bold text-green-400 mb-4">Legal</p>
               <ul className="text-sm space-y-2 text-green-300">
-                <li><a href="#" className="hover:text-green-300 transition">Privacy</a></li>
-                <li><a href="#" className="hover:text-green-300 transition">Terms</a></li>
+                <li><a href="/privacy" className="hover:text-green-300 transition">Privacy</a></li>
+                <li><a href="/terms" className="hover:text-green-300 transition">Terms</a></li>
               </ul>
             </div>
           </div>

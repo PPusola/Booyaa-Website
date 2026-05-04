@@ -121,15 +121,13 @@ export default function Products() {
               <p className="font-bold text-green-400 mb-4">Company</p>
               <ul className="text-sm space-y-2 text-green-300">
                 <li><a href="/about" className="hover:text-green-300 transition">About</a></li>
-                <li><a href="#" className="hover:text-green-300 transition">Blog</a></li>
-                <li><a href="#" className="hover:text-green-300 transition">Careers</a></li>
               </ul>
             </div>
             <div>
               <p className="font-bold text-green-400 mb-4">Legal</p>
               <ul className="text-sm space-y-2 text-green-300">
-                <li><a href="#" className="hover:text-green-300 transition">Privacy</a></li>
-                <li><a href="#" className="hover:text-green-300 transition">Terms</a></li>
+                <li><a href="/privacy" className="hover:text-green-300 transition">Privacy</a></li>
+                <li><a href="/terms" className="hover:text-green-300 transition">Terms</a></li>
               </ul>
             </div>
           </div>

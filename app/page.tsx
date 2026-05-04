@@ -23,7 +23,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl relative z-10">
           <div className="max-w-3xl space-y-8">
             <div className="inline-flex items-center gap-2 rounded-full border border-green-500 bg-green-500/10 px-4 py-1 text-sm text-green-300 font-medium">
-              🚀 Digital Solutions for Modern Businesses
+              Digital Solutions for Modern Businesses
             </div>
             <div className="space-y-6">
               <h1 className="text-6xl font-bold tracking-tight text-green-400 sm:text-7xl lg:text-8xl leading-tight">
@@ -62,7 +62,7 @@ export default function Home() {
             <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-2 duration-300">
               <div className="flex flex-col lg:flex-row gap-8 items-center">
                 <div className="flex-1">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black text-2xl mb-6">📊</div>
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black font-bold text-lg mb-6">CDN</div>
                   <h3 className="text-3xl font-bold text-green-400 mb-3">Caroline Does Numbers</h3>
                   <p className="text-green-300 leading-7 mb-6">
                     A comprehensive bookkeeping and tax services website for a Nelson, BC-based business. Features include service listings, client testimonials, and professional contact forms.
@@ -123,19 +123,16 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-6 md:grid-cols-3">
             <a href="/products" className="group rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-1 duration-300">
-              <div className="text-4xl mb-4">📱</div>
               <h3 className="text-2xl font-bold text-green-400 mb-2 group-hover:text-green-300">Products</h3>
               <p className="text-green-300 leading-7">Explore our amazing apps and projects.</p>
             </a>
-            
+
             <a href="/features" className="group rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-1 duration-300">
-              <div className="text-4xl mb-4">⚡</div>
               <h3 className="text-2xl font-bold text-green-400 mb-2 group-hover:text-green-300">Features</h3>
               <p className="text-green-300 leading-7">Learn about our web and mobile expertise.</p>
             </a>
 
             <a href="/download" className="group rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-1 duration-300">
-              <div className="text-4xl mb-4">🎯</div>
               <h3 className="text-2xl font-bold text-green-400 mb-2 group-hover:text-green-300">Download</h3>
               <p className="text-green-300 leading-7">Join our waitlist and get early access.</p>
             </a>
@@ -161,15 +158,13 @@ export default function Home() {
               <p className="font-bold text-green-400 mb-4">Company</p>
               <ul className="text-sm space-y-2 text-green-300">
                 <li><a href="/about" className="hover:text-green-300 transition">About</a></li>
-                <li><a href="#" className="hover:text-green-300 transition">Blog</a></li>
-                <li><a href="#" className="hover:text-green-300 transition">Careers</a></li>
               </ul>
             </div>
             <div>
               <p className="font-bold text-green-400 mb-4">Legal</p>
               <ul className="text-sm space-y-2 text-green-300">
-                <li><a href="#" className="hover:text-green-300 transition">Privacy</a></li>
-                <li><a href="#" className="hover:text-green-300 transition">Terms</a></li>
+                <li><a href="/privacy" className="hover:text-green-300 transition">Privacy</a></li>
+                <li><a href="/terms" className="hover:text-green-300 transition">Terms</a></li>
               </ul>
             </div>
           </div>
