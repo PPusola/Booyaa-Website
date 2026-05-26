@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "data-methodology.html",
+    "href": "data-methodology.html",
+    "title": "Data Methodology",
+    "section": "",
+    "text": "This project treats “live” as latest available public data. The scheduled workflow refreshes datasets from public sources and rebuilds the report/dashboard. Some sources update monthly, some quarterly, and some only through official press releases."
+  },
+  {
+    "objectID": "data-methodology.html#refresh-model",
+    "href": "data-methodology.html#refresh-model",
+    "title": "Data Methodology",
+    "section": "",
+    "text": "This project treats “live” as latest available public data. The scheduled workflow refreshes datasets from public sources and rebuilds the report/dashboard. Some sources update monthly, some quarterly, and some only through official press releases."
+  },
+  {
+    "objectID": "data-methodology.html#source-types",
+    "href": "data-methodology.html#source-types",
+    "title": "Data Methodology",
+    "section": "Source Types",
+    "text": "Source Types\n\nAPI refreshed: World Bank indicators are fetched through the World Bank API.\nScraped when stable: NPCI UPI product statistics are parsed from the public product statistics page when the HTML structure allows it.\nCurated official releases: MNRE, PIB, IndiaAI, PM E-DRIVE, semiconductor, defence, and critical-mineral milestones are stored as curated official indicators when stable APIs are unavailable."
+  },
+  {
+    "objectID": "data-methodology.html#indicator-limits",
+    "href": "data-methodology.html#indicator-limits",
+    "title": "Data Methodology",
+    "section": "Indicator Limits",
+    "text": "Indicator Limits\nThe dashboard separates measured data from policy outlays and projections. Policy outlays are not the same as realized sector output. Projections are marked as projections. Qualitative strategic indicators are included only when they help explain sector linkages and are labeled accordingly."
+  },
+  {
+    "objectID": "data-methodology.html#core-sources",
+    "href": "data-methodology.html#core-sources",
+    "title": "Data Methodology",
+    "section": "Core Sources",
+    "text": "Core Sources\n\nEconomic Survey 2025-26 summary via IBEF: https://www.ibef.org/economy/economic-survey-2025-26\nPRS Economic Survey 2025-26 summary: https://prsindia.org/files/policy/policy_committee_reports/Economic_Survey_2025-26.pdf\nIndia Semiconductor Mission 2.0: https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2224839\nMNRE renewable capacity release: https://nghm.mnre.gov.in/admin/uploads/176794038987418Press%20Release_Renewable%20Energy%20Capacity%20in%202025.pdf\nNITI Aayog EV opportunity page: https://niti.gov.in/node/1792\nPM E-DRIVE PIB release: https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2238257&lang=1&reg=3\nIndiaAI Mission PIB release: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2245069\nUPI / DPI PIB release: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257087\nNPCI UPI product statistics: https://www.npci.org.in/what-we-do/upi/product-statistics/\nWorld Bank manufacturing indicators: https://api.worldbank.org/v2/"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "India’s Emerging Manufacturing Sectors",
+    "section": "",
+    "text": "India’s next growth story will not be written by services alone. The country is trying to build a broader growth model around strategic manufacturing, energy transition, digital infrastructure, and supply-chain resilience. The most important emerging sectors are not simply fashionable technologies; they are industrial platforms that can reshape employment, productivity, imports, exports, and national capability.\nThis report focuses on six linked growth engines: semiconductors and electronics, clean energy manufacturing, electric vehicles and batteries, defence manufacturing, critical minerals, and AI-enabled digital infrastructure. Together, these sectors form the spine of a more production-oriented Indian economy."
+  },
+  {
+    "objectID": "index.html#executive-argument",
+    "href": "index.html#executive-argument",
+    "title": "India’s Emerging Manufacturing Sectors",
+    "section": "",
+    "text": "India’s next growth story will not be written by services alone. The country is trying to build a broader growth model around strategic manufacturing, energy transition, digital infrastructure, and supply-chain resilience. The most important emerging sectors are not simply fashionable technologies; they are industrial platforms that can reshape employment, productivity, imports, exports, and national capability.\nThis report focuses on six linked growth engines: semiconductors and electronics, clean energy manufacturing, electric vehicles and batteries, defence manufacturing, critical minerals, and AI-enabled digital infrastructure. Together, these sectors form the spine of a more production-oriented Indian economy."
+  },
+  {
+    "objectID": "index.html#the-growth-engine-scorecard",
+    "href": "index.html#the-growth-engine-scorecard",
+    "title": "India’s Emerging Manufacturing Sectors",
+    "section": "The Growth Engine Scorecard",
+    "text": "The Growth Engine Scorecard\nThe scorecard below is a research synthesis. It is not a forecast; it is a structured way to compare sector potential and constraints."
+  },
+  {
+    "objectID": "index.html#clean-energy-manufacturing",
+    "href": "index.html#clean-energy-manufacturing",
+    "title": "India’s Emerging Manufacturing Sectors",
+    "section": "Clean Energy Manufacturing",
+    "text": "Clean Energy Manufacturing\nClean energy is both a climate strategy and an industrial strategy. India has already built substantial non-fossil electricity capacity, but the larger prize is domestic value addition in solar modules, wind components, storage, electrolysers, grid equipment, and services around deployment.\n\n\n\n\n\n\n\n\n\nThe 500 GW non-fossil capacity target matters because it links public infrastructure, industrial investment, and energy security. But installed capacity is only part of the story. Manufacturing depth is the harder test: can India capture the supply chains behind the transition rather than mostly importing the equipment?"
+  },
+  {
+    "objectID": "index.html#semiconductors-and-electronics",
+    "href": "index.html#semiconductors-and-electronics",
+    "title": "India’s Emerging Manufacturing Sectors",
+    "section": "Semiconductors and Electronics",
+    "text": "Semiconductors and Electronics\nSemiconductors sit at the center of AI, telecom, defence, automobiles, consumer electronics, and industrial automation. India’s semiconductor push should be evaluated as a long-term capability project, not a short-cycle investment theme.\n\n\n\n\n\n\n\n\n\n\n\n\n\nsector\nmetric\nvalue\nunit\nvintage\nsource\n\n\n\n\nSemiconductors\nProjected semiconductor market\n100\nUSD billion by 2030\n2026\nPIB India Semiconductor Mission 2.0\n\n\nEVs and batteries\nPM E-DRIVE outlay\n10900\nINR crore\n2026\nPIB PM E-DRIVE\n\n\nAI and digital infrastructure\nIndiaAI Mission outlay\n10372\nINR crore\n2026\nPIB IndiaAI Mission\n\n\n\n\n\nThe key economic question is domestic value addition. Assembly can create scale and jobs, but design, packaging, specialty materials, testing, and supplier ecosystems create deeper productivity spillovers."
+  },
+  {
+    "objectID": "index.html#evs-batteries-and-urban-mobility",
+    "href": "index.html#evs-batteries-and-urban-mobility",
+    "title": "India’s Emerging Manufacturing Sectors",
+    "section": "EVs, Batteries, and Urban Mobility",
+    "text": "EVs, Batteries, and Urban Mobility\nIndia’s EV pathway will look different from markets where private cars dominate the transition. Two-wheelers, three-wheelers, buses, delivery fleets, and charging networks are likely to matter more in the early phase. That makes the sector important for manufacturing, urban air quality, logistics costs, and oil-import exposure."
+  },
+  {
+    "objectID": "index.html#ai-and-digital-infrastructure",
+    "href": "index.html#ai-and-digital-infrastructure",
+    "title": "India’s Emerging Manufacturing Sectors",
+    "section": "AI and Digital Infrastructure",
+    "text": "AI and Digital Infrastructure\nIndia’s digital public infrastructure has already shown that the country can build population-scale systems. UPI is the clearest proof point. AI can become the next enabling layer if it raises productivity in manufacturing, logistics, agriculture, finance, health, and public services.\n\n\n\n\n\n\n\n\n\nThe strategic point is that AI and digital infrastructure are not separate from manufacturing. They improve quality control, demand forecasting, design, maintenance, logistics, and financial access across production networks. The dashboard includes both annual and monthly UPI views so the long-run adoption curve and recent month-to-month momentum can be read separately."
+  },
+  {
+    "objectID": "index.html#defence-manufacturing-and-critical-minerals",
+    "href": "index.html#defence-manufacturing-and-critical-minerals",
+    "title": "India’s Emerging Manufacturing Sectors",
+    "section": "Defence Manufacturing and Critical Minerals",
+    "text": "Defence Manufacturing and Critical Minerals\nDefence manufacturing and critical minerals are less consumer-facing, but they are central to strategic autonomy. Defence can build capabilities in aerospace, electronics, drones, sensors, shipbuilding, and advanced materials. Critical minerals are the input layer behind batteries, semiconductors, clean energy, and electronics.\nThe common constraint is ecosystem depth. India needs supplier networks, testing facilities, technical standards, skill pipelines, and patient capital to convert strategic intent into globally competitive production."
+  },
+  {
+    "objectID": "index.html#conclusion",
+    "href": "index.html#conclusion",
+    "title": "India’s Emerging Manufacturing Sectors",
+    "section": "Conclusion",
+    "text": "Conclusion\nIndia’s emerging-sector opportunity is real because it aligns several forces at once: domestic demand, global supply-chain diversification, energy transition, digital infrastructure, and industrial policy. The decisive test is whether India can move from market size and policy ambition to production ecosystems with deep domestic value addition.\nThe next growth story will be measured in factories, fabs, batteries, clean-energy supply chains, defence corridors, mineral security, and AI-enabled production systems."
+  }
+]

@@ -1,180 +1,147 @@
-﻿"use client";
+import { ContactModal } from "@/components/ContactModal";
+import { PageShell } from "@/components/SiteChrome";
+
+const services = [
+  ["Website refreshes", "$50-$200", "Quick updates to spacing, copy, styling, and small usability issues on an existing site."],
+  ["Small business sites", "$200-$500", "A focused new website or landing page for a service, portfolio, or local business."],
+  ["Launch cleanup", "$300-$500", "Forms, deployment, analytics, performance checks, and final launch polish."],
+  ["App MVPs", "$600-$1,500", "Small app builds and prototypes with focused features, clear screens, and a path to testing."],
+  ["Web + mobile", "$1,000-$2,500", "A connected website and mobile app package for projects that need both presence and product."],
+];
+
+const projects = [
+  {
+    name: "Caroline Does Numbers",
+    type: "Client website",
+    status: "Live",
+    href: "/caroline-does-numbers",
+    text: "A practical service website for bookkeeping and tax support.",
+  },
+  {
+    name: "MiDoid",
+    type: "Downloadable project",
+    status: "Release",
+    href: "/midoid",
+    text: "A public project available through GitHub Releases.",
+  },
+  {
+    name: "PhotoSnap",
+    type: "Product concept",
+    status: "Waitlist",
+    href: "/photosnap",
+    text: "A memory challenge app for guessing when photos were taken.",
+  },
+  {
+    name: "Spotify Jam Sesh",
+    type: "Product concept",
+    status: "Prototype",
+    href: "/spotify-jam-sesh",
+    text: "A shared listening room concept for synchronized music sessions.",
+  },
+];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-green-400">
-      <header className="sticky top-0 z-50 border-b border-green-500/30 bg-black/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
-          <div className="text-2xl font-bold bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">Booyaa</div>
-          <nav className="hidden items-center gap-8 text-sm text-green-400 md:flex">
-            <a href="/products" className="transition hover:text-green-300 hover:font-semibold">Products</a>
-            <a href="/features" className="transition hover:text-green-300 hover:font-semibold">Features</a>
-            <a href="/about" className="transition hover:text-green-300 hover:font-semibold">About</a>
-            <a href="/download" className="transition hover:text-green-300 hover:font-semibold">Download</a>
-            <a href="/quote" className="rounded-full border border-green-500 px-4 py-1.5 text-sm font-semibold text-green-400 transition hover:bg-green-500/10 hover:text-green-300">Get a Quote</a>
-          </nav>
-        </div>
-      </header>
-
-      <section className="relative overflow-hidden px-6 py-32 sm:px-10 md:px-12">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        </div>
-        <div className="mx-auto max-w-6xl relative z-10">
-          <div className="max-w-3xl space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-green-500 bg-green-500/10 px-4 py-1 text-sm text-green-300 font-medium">
-              Digital Solutions for Modern Businesses
-            </div>
-            <div className="space-y-6">
-              <h1 className="text-6xl font-bold tracking-tight text-green-400 sm:text-7xl lg:text-8xl leading-tight">
-                Code that<br/>connects.<br/>Creates.<br/>Converts.
-              </h1>
-              <p className="max-w-2xl text-xl leading-8 text-green-300 sm:text-2xl">
-                We build stunning websites and powerful apps that drive results. From bookkeeping platforms to social gaming apps, we turn ideas into digital success stories.
-              </p>
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center pt-4">
-                <a
-                  href="#portfolio"
-                  className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 text-base font-semibold text-black shadow-lg shadow-green-500/30 transition hover:shadow-xl hover:-translate-y-1 hover:shadow-green-500/50 sm:w-auto"
-                >
-                  View Our Work
-                </a>
-                <a href="/quote" className="inline-flex w-full justify-center rounded-full border-2 border-green-500 px-8 py-4 text-base text-green-400 transition hover:border-green-400 hover:text-green-300 hover:bg-green-500/10 sm:w-auto font-semibold">
-                  Get a Quote
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="portfolio" className="px-6 py-24 sm:px-10 md:px-12 bg-gradient-to-r from-gray-900 to-black">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <p className="text-sm uppercase tracking-[0.24em] text-green-400 font-bold">Our Portfolio</p>
-            <h2 className="mt-4 text-5xl font-bold text-green-400 sm:text-6xl">Digital Success Stories</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg leading-7 text-green-300">
-              Real projects, real results. See how we've transformed businesses through innovative web solutions.
+    <PageShell>
+      <section className="border-b border-[#d9d0c2] px-5 py-20 sm:px-8 md:py-28">
+        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+          <div>
+            <p className="mb-5 max-w-xl text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">
+              Product and web studio
             </p>
-          </div>
-
-          <div className="grid gap-8 lg:grid-cols-1">
-            <div className="rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-2 duration-300">
-              <div className="flex flex-col lg:flex-row gap-8 items-center">
-                <div className="flex-1">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-black font-bold text-lg mb-6">CDN</div>
-                  <h3 className="text-3xl font-bold text-green-400 mb-3">Caroline Does Numbers</h3>
-                  <p className="text-green-300 leading-7 mb-6">
-                    A comprehensive bookkeeping and tax services website for a Nelson, BC-based business. Features include service listings, client testimonials, and professional contact forms.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-400">25+</div>
-                      <div className="text-sm text-green-300">Years Experience</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-400">100%</div>
-                      <div className="text-sm text-green-300">Client Retention</div>
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <a
-                      href="https://project-inuil.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-green-600 px-6 py-3 text-base font-semibold text-black shadow-lg shadow-green-500/30 transition hover:shadow-xl hover:-translate-y-1"
-                    >
-                      View Live Site →
-                    </a>
-                    <div className="inline-flex items-center gap-2 text-green-400">
-                      <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                      Live & Active
-                    </div>
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="bg-gradient-to-br from-green-900/20 to-green-800/20 rounded-2xl p-6 border border-green-500/20">
-                    <h4 className="text-green-400 font-semibold mb-4">Services Delivered:</h4>
-                    <ul className="space-y-2 text-green-300 text-sm">
-                      <li>• Custom responsive website design</li>
-                      <li>• Service pages (Bookkeeping, Payroll, Tax)</li>
-                      <li>• Contact forms and business information</li>
-                      <li>• Professional branding and UI/UX</li>
-                      <li>• SEO optimization and performance</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            <h1 className="max-w-4xl text-5xl font-semibold leading-[0.98] tracking-tight text-[#18231d] sm:text-6xl lg:text-7xl">
+              Useful websites and apps for small teams with real things to ship.
+            </h1>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-[#536156]">
+              Booyaa builds focused websites, app MVPs, and launch-ready digital tools with clean interfaces, practical scope, and direct communication.
+            </p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <ContactModal topic="Project quote" source="Homepage hero">
+                Get a Quote
+              </ContactModal>
+              <a
+                href="#work"
+                className="inline-flex items-center justify-center border border-[#b8ad9d] px-5 py-2.5 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
+              >
+                View work
+              </a>
             </div>
           </div>
 
-          <div className="text-center mt-12">
-            <a
-              href="mailto:priyanshu@booyaa.net?subject=Project Inquiry&body=Hi, I'm interested in working with Booyaa on a web development project."
-              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 text-base font-semibold text-black shadow-lg shadow-green-500/30 transition hover:shadow-xl hover:-translate-y-1 hover:shadow-green-500/50"
-            >
-              Start Your Project
-            </a>
+          <div className="border border-[#cfc5b6] bg-[#fffaf2] p-5 shadow-[18px_18px_0_#ded4c6]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Current build rhythm</p>
+            <div className="mt-6 grid gap-4">
+              {["Scope the smallest useful version", "Design screens people can scan", "Build cleanly and launch without drama"].map((item, index) => (
+                <div key={item} className="grid grid-cols-[3rem_1fr] border border-[#d9d0c2] bg-[#fdf8ef]">
+                  <span className="border-r border-[#d9d0c2] py-4 text-center text-sm font-semibold text-[#7b3f2f]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="px-5 py-4 text-sm font-semibold text-[#1f2a24]">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="px-6 py-16 sm:px-10 md:px-12">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-6 md:grid-cols-3">
-            <a href="/products" className="group rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-1 duration-300">
-              <h3 className="text-2xl font-bold text-green-400 mb-2 group-hover:text-green-300">Products</h3>
-              <p className="text-green-300 leading-7">Explore our amazing apps and projects.</p>
-            </a>
-
-            <a href="/features" className="group rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-1 duration-300">
-              <h3 className="text-2xl font-bold text-green-400 mb-2 group-hover:text-green-300">Features</h3>
-              <p className="text-green-300 leading-7">Learn about our web and mobile expertise.</p>
-            </a>
-
-            <a href="/download" className="group rounded-3xl border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-8 shadow-lg hover:shadow-green-500/20 transition hover:-translate-y-1 duration-300">
-              <h3 className="text-2xl font-bold text-green-400 mb-2 group-hover:text-green-300">Download</h3>
-              <p className="text-green-300 leading-7">Join our waitlist and get early access.</p>
-            </a>
+      <section id="work" className="px-5 py-20 sm:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10 max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Selected work</p>
+            <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d] sm:text-5xl">Small, focused projects with clear outcomes.</h2>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            {projects.map((project) => (
+              <a
+                key={project.name}
+                href={project.href}
+                className="border border-[#d9d0c2] bg-[#fffaf2] p-6 transition hover:-translate-y-1 hover:border-[#1f2a24]"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">{project.type}</p>
+                    <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#18231d]">{project.name}</h3>
+                  </div>
+                  <span className="border border-[#d8cec0] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#536156]">
+                    {project.status}
+                  </span>
+                </div>
+                <p className="mt-5 leading-7 text-[#536156]">{project.text}</p>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-green-500/30 px-6 py-12 text-green-400 sm:px-10">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-12 md:grid-cols-4 mb-12">
-            <div>
-              <p className="font-bold text-green-400 mb-4">Booyaa</p>
-              <p className="text-sm text-green-300">We build websites and apps for businesses and users.</p>
-            </div>
-            <div>
-              <p className="font-bold text-green-400 mb-4">Products</p>
-              <ul className="text-sm space-y-2 text-green-300">
-                <li><a href="/photosnap" className="hover:text-green-300 transition">PhotoSnap</a></li>
-                <li><a href="/spotify-jam-sesh" className="hover:text-green-300 transition">Spotify Jam Sesh</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-bold text-green-400 mb-4">Company</p>
-              <ul className="text-sm space-y-2 text-green-300">
-                <li><a href="/about" className="hover:text-green-300 transition">About</a></li>
-                <li><a href="/quote" className="hover:text-green-300 transition">Get a Quote</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-bold text-green-400 mb-4">Legal</p>
-              <ul className="text-sm space-y-2 text-green-300">
-                <li><a href="/privacy" className="hover:text-green-300 transition">Privacy</a></li>
-                <li><a href="/terms" className="hover:text-green-300 transition">Terms</a></li>
-              </ul>
-            </div>
+      <section className="border-y border-[#d9d0c2] bg-[#fffaf2] px-5 py-20 sm:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10 max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Starting points</p>
+            <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d] sm:text-5xl">Straightforward pricing for smaller builds.</h2>
           </div>
-          <div className="border-t border-green-500/30 pt-8 text-sm text-center text-green-500">
-            <p>© {new Date().getFullYear()} Booyaa. All rights reserved.</p>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+            {services.map(([title, price, text]) => (
+              <article key={title} className="border-l border-[#cfc5b6] pl-6">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">{price}</p>
+                <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#18231d]">{title}</h3>
+                <p className="mt-4 leading-7 text-[#536156]">{text}</p>
+              </article>
+            ))}
           </div>
         </div>
-      </footer>
-    </main>
+      </section>
+
+      <section className="bg-[#1f2a24] px-5 py-16 text-[#f6f1e8] sm:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d6a26f]">Ready when you are</p>
+            <h2 className="mt-3 max-w-2xl text-4xl font-semibold tracking-tight">Have a website or app that needs a cleaner first version?</h2>
+          </div>
+          <ContactModal topic="Project quote" source="Homepage closing CTA" variant="light">
+            Start a project
+          </ContactModal>
+        </div>
+      </section>
+    </PageShell>
   );
 }

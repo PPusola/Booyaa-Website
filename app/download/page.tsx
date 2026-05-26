@@ -1,84 +1,89 @@
-"use client";
+import { ContactModal } from "@/components/ContactModal";
+import { PageShell } from "@/components/SiteChrome";
+
+const downloads = [
+  {
+    name: "MiDoid",
+    status: "Latest release",
+    platform: "GitHub Releases",
+    version: "Latest GitHub release",
+    availability: "Public release",
+    href: "https://github.com/PPusola/MiDoid/releases",
+    source: "https://github.com/PPusola/MiDoid",
+    text: "Download the latest public release from the MiDoid GitHub repository.",
+  },
+];
 
 export default function Download() {
   return (
-    <main className="min-h-screen bg-black text-green-400">
-      <header className="sticky top-0 z-50 border-b border-green-500/30 bg-black/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
-          <a href="/" className="text-2xl font-bold bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">Booyaa</a>
-          <nav className="hidden items-center gap-8 text-sm text-green-400 md:flex">
-            <a href="/products" className="transition hover:text-green-300 hover:font-semibold">Products</a>
-            <a href="/features" className="transition hover:text-green-300 hover:font-semibold">Features</a>
-            <a href="/about" className="transition hover:text-green-300 hover:font-semibold">About</a>
-            <a href="/download" className="transition hover:text-green-300 hover:font-semibold">Download</a>
-          </nav>
-        </div>
-      </header>
-
-      <section className="relative overflow-hidden px-6 py-32 sm:px-10 md:px-12">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        </div>
-        <div className="mx-auto max-w-4xl relative z-10">
-          <div className="rounded-4xl bg-gradient-to-br from-gray-900 via-black to-gray-900 p-12 sm:p-16 text-center shadow-2xl border border-green-500/30">
-            <p className="text-sm uppercase tracking-[0.24em] text-green-400 font-bold">Join the waitlist</p>
-            <h1 className="mt-4 text-4xl sm:text-5xl font-bold text-green-400">Be the first to experience Booyaa</h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-green-300 leading-8">
-              Our apps are coming soon. Join the waitlist to get early access and exclusive updates.
+    <PageShell>
+      <section className="px-5 py-20 sm:px-8 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Downloads</p>
+            <h1 className="mt-4 text-5xl font-semibold leading-tight tracking-tight text-[#18231d] sm:text-6xl">Public releases from Booyaa.</h1>
+            <p className="mt-6 text-lg leading-8 text-[#536156]">
+              Download available projects directly from their release pages.
             </p>
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center mt-10">
-              <a
-                href="mailto:priyanshu@booyaa.net?subject=Interest in PhotoSnap Waitlist&body=Hi, I'm interested in joining the waitlist for PhotoSnap. Please add me to the list."
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 text-base font-semibold text-black shadow-lg shadow-green-500/40 transition hover:shadow-xl hover:-translate-y-1"
-              >
-                PhotoSnap Waitlist
-              </a>
-              <a
-                href="mailto:priyanshu@booyaa.net?subject=Interest in Spotify Jam Sesh Waitlist&body=Hi, I'm interested in joining the waitlist for Spotify Jam Sesh. Please add me to the list."
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 text-base font-semibold text-black shadow-lg shadow-green-500/40 transition hover:shadow-xl hover:-translate-y-1"
-              >
-                Spotify Jam Sesh Waitlist
-              </a>
-            </div>
+          </div>
+
+          <div className="mt-14 grid gap-5 md:grid-cols-2">
+            {downloads.map((item) => (
+              <article key={item.name} className="border border-[#d9d0c2] bg-[#fffaf2] p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">{item.platform}</p>
+                    <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#18231d]">{item.name}</h2>
+                  </div>
+                  <span className="border border-[#d8cec0] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#536156]">
+                    {item.status}
+                  </span>
+                </div>
+                <p className="mt-6 leading-7 text-[#536156]">{item.text}</p>
+                <dl className="mt-6 grid gap-3 border-y border-[#d9d0c2] py-5 text-sm leading-6 text-[#536156] sm:grid-cols-2">
+                  <div>
+                    <dt className="font-semibold text-[#18231d]">Version</dt>
+                    <dd>{item.version}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#18231d]">Availability</dt>
+                    <dd>{item.availability}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#18231d]">Changelog</dt>
+                    <dd>Included on GitHub Releases</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#18231d]">Source</dt>
+                    <dd>GitHub repository</dd>
+                  </div>
+                </dl>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center bg-[#1f2a24] px-5 py-2.5 text-sm font-semibold text-[#f6f1e8] transition hover:bg-[#7b3f2f]"
+                  >
+                    Download {item.name}
+                  </a>
+                  <a
+                    href={item.source}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center border border-[#b8ad9d] px-5 py-2.5 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
+                  >
+                    View source
+                  </a>
+                  <ContactModal topic={`${item.name} support`} source="Downloads page" variant="secondary" mode="contact">
+                    Support
+                  </ContactModal>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
-
-      <footer className="border-t border-green-500/30 px-6 py-12 text-green-400 sm:px-10">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-12 md:grid-cols-4 mb-12">
-            <div>
-              <p className="font-bold text-green-400 mb-4">Booyaa</p>
-              <p className="text-sm text-green-300">We build websites and apps for businesses and users.</p>
-            </div>
-            <div>
-              <p className="font-bold text-green-400 mb-4">Products</p>
-              <ul className="text-sm space-y-2 text-green-300">
-                <li><a href="/products" className="hover:text-green-300 transition">PhotoSnap</a></li>
-                <li><a href="/products" className="hover:text-green-300 transition">Spotify Jam Sesh</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-bold text-green-400 mb-4">Company</p>
-              <ul className="text-sm space-y-2 text-green-300">
-                <li><a href="/about" className="hover:text-green-300 transition">About</a></li>
-                <li><a href="/quote" className="hover:text-green-300 transition">Get a Quote</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-bold text-green-400 mb-4">Legal</p>
-              <ul className="text-sm space-y-2 text-green-300">
-                <li><a href="/privacy" className="hover:text-green-300 transition">Privacy</a></li>
-                <li><a href="/terms" className="hover:text-green-300 transition">Terms</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-green-500/30 pt-8 text-sm text-center text-green-500">
-            <p>© {new Date().getFullYear()} Booyaa. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-    </main>
+    </PageShell>
   );
 }

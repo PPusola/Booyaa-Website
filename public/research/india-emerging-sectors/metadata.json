@@ -1,0 +1,24 @@
+{
+  "title": "India Emerging Sectors Dashboard",
+  "slug": "india-emerging-sectors",
+  "status": "active",
+  "update_cadence": "scheduled",
+  "sources": {
+    "worldbank": {
+      "name": "World Bank API",
+      "status": "refreshed",
+      "url": "https://api.worldbank.org/v2/"
+    },
+    "upi": {
+      "name": "NPCI UPI product statistics",
+      "status": "api",
+      "url": "https://www.npci.org.in/what-we-do/upi/product-statistics/"
+    },
+    "curated": {
+      "name": "Official release tracker",
+      "status": "refreshed",
+      "url": "data-methodology.html"
+    }
+  },
+  "generated_at": "2026-05-19T07:13:49Z"
+}
