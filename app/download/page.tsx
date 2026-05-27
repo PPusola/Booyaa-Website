@@ -10,7 +10,7 @@ const downloads = [
     availability: "Public release",
     href: "https://github.com/PPusola/MiDoid/releases",
     source: "https://github.com/PPusola/MiDoid",
-    text: "Download the latest public release from the MiDoid GitHub repository.",
+    text: "A local-first macOS and Android companion app for securely browsing and transferring Android files from your Mac over Wi-Fi.",
   },
 ];
 

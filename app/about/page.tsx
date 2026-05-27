@@ -102,7 +102,7 @@ export default function AboutPage() {
                   <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#7b3f2f]">Projects</h3>
                   <div className="mt-3 space-y-3 leading-7 text-[#536156]">
                     <p><span className="font-semibold text-[#18231d]">Spotify Jam Sesh</span> - Real-time music sync concept using React Native and Spotify APIs.</p>
-                    <p><span className="font-semibold text-[#18231d]">MiDoid</span> - Public downloadable project released through GitHub.</p>
+                    <p><span className="font-semibold text-[#18231d]">MiDoid</span> - Local-first macOS and Android companion app for Wi-Fi file browsing and transfer.</p>
                     <p><span className="font-semibold text-[#18231d]">Cyan</span> - Distributed social network project with Django and React.</p>
                   </div>
                 </section>

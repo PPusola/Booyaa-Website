@@ -2,13 +2,13 @@ import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
 
 const details = [
-  ["Problem", "The project needed a simple public release path so people could find and download the latest build without digging through the site."],
-  ["What I built", "A lightweight product entry with a download path that points directly to GitHub Releases."],
+  ["Problem", "Moving Android files from a Mac can feel clunky, especially when people want a local Wi-Fi workflow instead of cables or cloud handoffs."],
+  ["What I built", "A local-first macOS and Android companion app for securely browsing and transferring Android files from your Mac over Wi-Fi."],
   ["Tech used", "GitHub Releases, product page structure, and the Booyaa downloads shelf."],
-  ["Outcome", "MiDoid now has a clear home inside Booyaa work and a direct release link from the Downloads page."],
+  ["Outcome", "MiDoid now has a clear product page, a direct release link, and a consistent description across Booyaa."],
 ];
 
-const features = ["Latest release link", "GitHub-hosted downloads", "Product status", "Support/contact path"];
+const features = ["Local-first transfer flow", "macOS and Android companion app", "Wi-Fi file browsing", "GitHub-hosted releases"];
 
 export default function MiDoidPage() {
   return (
@@ -19,7 +19,7 @@ export default function MiDoidPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Downloadable project</p>
             <h1 className="mt-4 text-5xl font-semibold leading-tight tracking-tight text-[#18231d] sm:text-6xl">MiDoid</h1>
             <p className="mt-6 text-lg leading-8 text-[#536156]">
-              A public project available through GitHub Releases, with the latest download kept easy to reach.
+              A local-first macOS and Android companion app for securely browsing and transferring Android files from your Mac over Wi-Fi.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a

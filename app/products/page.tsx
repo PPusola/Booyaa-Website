@@ -16,7 +16,7 @@ const projects = [
     status: "Latest release",
     href: "/midoid",
     cta: "View project",
-    text: "A public project available through GitHub Releases. The download page keeps the latest release easy to find.",
+    text: "A local-first macOS and Android companion app for securely browsing and transferring Android files from your Mac over Wi-Fi.",
   },
   {
     name: "PhotoSnap",

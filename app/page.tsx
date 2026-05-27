@@ -22,7 +22,7 @@ const projects = [
     type: "Downloadable project",
     status: "Release",
     href: "/midoid",
-    text: "A public project available through GitHub Releases.",
+    text: "A local-first macOS and Android companion app for browsing and transferring Android files from your Mac over Wi-Fi.",
   },
   {
     name: "PhotoSnap",
