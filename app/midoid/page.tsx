@@ -4,8 +4,8 @@ import { PageShell } from "@/components/SiteChrome";
 const details = [
   ["Problem", "Moving Android files from a Mac can feel clunky, especially when people want a local Wi-Fi workflow instead of cables or cloud handoffs."],
   ["What I built", "A local-first macOS and Android companion app for securely browsing and transferring Android files from your Mac over Wi-Fi."],
-  ["Tech used", "GitHub Releases, product page structure, and the Booyaa downloads shelf."],
-  ["Outcome", "MiDoid now has a clear product page, a direct release link, and a consistent description across Booyaa."],
+  ["Tech used", "Swift for the macOS companion, Android for the mobile app, QR-based pairing, mDNS discovery, temporary authenticated sessions, WebDAV file transfer, and Android Storage Access Framework."],
+  ["Outcome", "An early open-source release that lets a Mac browse, upload, download, delete, preview, and organize Android files over the local network without a MiDoid cloud account or server."],
 ];
 
 const features = ["Local-first transfer flow", "macOS and Android companion app", "Wi-Fi file browsing", "GitHub-hosted releases"];
