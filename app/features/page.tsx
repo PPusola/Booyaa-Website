@@ -27,22 +27,6 @@ const services = [
     next: "Share the current build and what still feels unfinished.",
   },
   {
-    title: "App MVP",
-    price: "$600-$1,500",
-    timeline: "Usually 3-6 weeks",
-    for: "Focused app ideas that need a first usable version, not a giant platform.",
-    includes: "Core screens, user flow, data handling, app logic, and enough polish to test with real users.",
-    next: "Describe the smallest version someone could actually use.",
-  },
-  {
-    title: "Website + mobile app",
-    price: "$1,000-$2,500",
-    timeline: "Usually 4-8 weeks",
-    for: "Projects that need both a public website and a connected mobile product.",
-    includes: "Website, app screens, shared product direction, launch prep, and connected user journeys.",
-    next: "Send the audience, core app flow, and what the website needs to explain.",
-  },
-  {
     title: "Maintenance",
     price: "Custom quote",
     timeline: "Scheduled as needed",

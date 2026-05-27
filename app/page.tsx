@@ -5,8 +5,6 @@ const services = [
   ["Website refreshes", "$50-$200", "Quick updates to spacing, copy, styling, and small usability issues on an existing site."],
   ["Small business sites", "$200-$500", "A focused new website or landing page for a service, portfolio, or local business."],
   ["Launch cleanup", "$300-$500", "Forms, deployment, analytics, performance checks, and final launch polish."],
-  ["App MVPs", "$600-$1,500", "Small app builds and prototypes with focused features, clear screens, and a path to testing."],
-  ["Web + mobile", "$1,000-$2,500", "A connected website and mobile app package for projects that need both presence and product."],
 ];
 
 const projects = [

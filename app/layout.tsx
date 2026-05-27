@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Booyaa | Product and Web Studio',
-  description: 'Booyaa designs and builds focused websites, mobile apps, and launch-ready digital products.',
+  description: 'Booyaa designs and builds focused websites and launch-ready digital products.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

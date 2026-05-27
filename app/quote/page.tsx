@@ -20,16 +20,6 @@ const packages = [
     description: "Best for final polish, forms, deployment, analytics, and launch checks before going public.",
   },
   {
-    name: "App MVP",
-    range: "$600-$1,500",
-    description: "Best for a focused app prototype or small first version with a practical set of screens and features.",
-  },
-  {
-    name: "Website + Mobile App",
-    range: "$1,000-$2,500",
-    description: "Best when the project needs both a public site and a connected app experience.",
-  },
-  {
     name: "Custom Project",
     range: "Scoped after a call",
     description: "Best for ecommerce, dashboards, auth-heavy apps, integrations, or larger builds.",
