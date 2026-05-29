@@ -98,28 +98,6 @@ export default function MiDoidPage() {
         </div>
       </section>
 
-      {/* Pricing + Trust */}
-      <section className="border-y border-[#d9d0c2] bg-[#fffaf2] px-5 py-12 sm:px-8">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Pricing</p>
-            <p className="mt-2 text-4xl font-semibold tracking-tight text-[#18231d]">$4.99</p>
-            <p className="mt-1 text-sm text-[#536156]">One-time purchase. No subscription.</p>
-          </div>
-          <div className="grid gap-2 text-sm text-[#536156] sm:text-right">
-            <p className="flex items-center gap-2 sm:justify-end">
-              <span className="text-[#7b3f2f]">&#10003;</span> Local network only. No data ever leaves your devices.
-            </p>
-            <p className="flex items-center gap-2 sm:justify-end">
-              <span className="text-[#7b3f2f]">&#10003;</span> No account. No sign-up. No cloud storage.
-            </p>
-            <p className="flex items-center gap-2 sm:justify-end">
-              <span className="text-[#7b3f2f]">&#10003;</span> Works entirely on your own Wi-Fi network.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* 3-Step Setup */}
       <section className="px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-7xl">
@@ -222,7 +200,7 @@ export default function MiDoidPage() {
 
       {/* Support + Legal */}
       <section className="border-t border-[#d9d0c2] bg-[#fffaf2] px-5 py-16 sm:px-8">
-        <div className="mx-auto max-w-7xl grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto max-w-7xl grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Support</p>
             <p className="mt-4 text-sm leading-7 text-[#536156]">Questions, bug reports, or setup help? Reach out directly.</p>
@@ -231,8 +209,8 @@ export default function MiDoidPage() {
             </ContactModal>
             <p className="mt-3 text-sm text-[#536156]">
               Or email{" "}
-              <a href="mailto:sidpusola1027@gmail.com" className="font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4 hover:text-[#7b3f2f]">
-                sidpusola1027@gmail.com
+              <a href="mailto:priyanshu@booyaa.net" className="font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4 hover:text-[#7b3f2f]">
+                priyanshu@booyaa.net
               </a>
             </p>
           </div>
@@ -246,12 +224,6 @@ export default function MiDoidPage() {
                 <a href="/terms" className="font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4 hover:text-[#7b3f2f]">Terms of Use</a>
               </p>
             </div>
-          </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Refunds</p>
-            <p className="mt-4 text-sm leading-7 text-[#536156]">
-              If MiDoid does not work as described on your supported device, contact support within 14 days of purchase for a full refund. No questions asked.
-            </p>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Source</p>
