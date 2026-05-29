@@ -167,7 +167,7 @@ export default function MiDoidPage() {
             <div className="border border-[#d9d0c2] bg-[#fffaf2] p-6">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Android</p>
               <p className="mt-3 font-semibold text-[#18231d]">Android 8.0 or later</p>
-              <p className="mt-2 text-sm leading-6 text-[#536156]">Distributed as a sideloaded APK. Enable "Install from unknown sources" in your Android settings to install.</p>
+              <p className="mt-2 text-sm leading-6 text-[#536156]">Distributed as a sideloaded APK. Enable &ldquo;Install from unknown sources&rdquo; in your Android settings to install.</p>
             </div>
             <div className="border border-[#d9d0c2] bg-[#fffaf2] p-6">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Network</p>
