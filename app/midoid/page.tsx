@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+
+export const metadata: Metadata = {
+  title: "MiDoid Android to Mac File Transfer",
+  description:
+    "MiDoid moves files between Android and Mac privately over your local Wi-Fi network with no cloud account required.",
+  alternates: {
+    canonical: "/midoid",
+  },
+};
 
 const steps = [
   { number: "01", title: "Open MiDoid on Mac", body: "Launch the menu bar app and it will start listening on your local network." },

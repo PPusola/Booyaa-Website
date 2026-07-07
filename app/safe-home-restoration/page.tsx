@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+
+export const metadata: Metadata = {
+  title: "Safe Home Restoration Website Case Study",
+  description:
+    "A Booyaa case study for an Edmonton emergency restoration website built around local SEO, click-to-call UX, and lead capture.",
+  alternates: {
+    canonical: "/safe-home-restoration",
+  },
+};
 
 const details = [
   [

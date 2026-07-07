@@ -15,8 +15,22 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: 'Booyaa | Websites for Home-Services Businesses',
+  metadataBase: new URL('https://booyaa.net'),
+  title: {
+    default: 'Booyaa | Websites for Home-Services Businesses',
+    template: '%s | Booyaa',
+  },
   description: 'Booyaa builds websites and lead-capture tools for home-services and local businesses. Built to rank in local search and turn visitors into phone calls.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Booyaa | Websites for Home-Services Businesses',
+    description: 'Websites and lead-capture tools for home-services and local businesses.',
+    url: 'https://booyaa.net',
+    siteName: 'Booyaa',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

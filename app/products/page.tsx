@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+
+export const metadata: Metadata = {
+  title: "Client Work and Booyaa Labs",
+  description:
+    "Explore Booyaa client websites and independent engineering projects, including local SEO websites, AI tools, and shipped apps.",
+  alternates: {
+    canonical: "/products",
+  },
+};
 
 const clientWork = [
   {

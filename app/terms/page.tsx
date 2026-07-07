@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description: "Read the terms that apply to Booyaa websites, products, and services.",
+  alternates: {
+    canonical: "/terms",
+  },
+};
 
 const sections = [
   ["Acceptance", "By using Booyaa websites, products, or services, you agree to these terms. If you do not agree, please do not use the services."],

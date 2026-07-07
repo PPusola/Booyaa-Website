@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+
+export const metadata: Metadata = {
+  title: "Otto Local AI Assistant",
+  description:
+    "Otto is a local-first AI assistant with tool use, encrypted memory, and voice control, built by Booyaa Labs.",
+  alternates: {
+    canonical: "/otto",
+  },
+};
 
 const details = [
   [

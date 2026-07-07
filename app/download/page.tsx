@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+
+export const metadata: Metadata = {
+  title: "Downloads",
+  description:
+    "Download public Booyaa releases including MiDoid for private Android and Mac file transfer.",
+  alternates: {
+    canonical: "/download",
+  },
+};
 
 const downloads = [
   {

@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+
+export const metadata: Metadata = {
+  title: "Website Design and Lead-Capture Services",
+  description:
+    "Website builds, rebuilds, AI lead capture, and ongoing care for home-services and local businesses.",
+  alternates: {
+    canonical: "/features",
+  },
+};
 
 const services = [
   {

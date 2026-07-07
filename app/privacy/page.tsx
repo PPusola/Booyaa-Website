@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "Read the Booyaa privacy policy for website, service, and product data handling.",
+  alternates: {
+    canonical: "/privacy",
+  },
+};
 
 const sections = [
   ["Information we collect", "Booyaa may collect contact details you submit through forms, basic website usage information, and product-specific information required to operate Booyaa apps."],

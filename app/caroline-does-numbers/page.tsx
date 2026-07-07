@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+
+export const metadata: Metadata = {
+  title: "Caroline Does Numbers Website Case Study",
+  description:
+    "A Booyaa case study for a bookkeeping and tax website built around clarity, trust, and simple client contact.",
+  alternates: {
+    canonical: "/caroline-does-numbers",
+  },
+};
 
 const details = [
   ["Problem", "The business needed a clear online presence that explained bookkeeping and tax support without feeling crowded or confusing."],

@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+
+export const metadata: Metadata = {
+  title: "Websites for Home-Services Businesses",
+  description:
+    "Booyaa builds websites and lead-capture tools for restoration companies, contractors, and local service businesses that need more phone calls.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 const clientWork = [
   {
