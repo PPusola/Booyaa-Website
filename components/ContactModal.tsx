@@ -71,22 +71,14 @@ export function ContactModal({
       return;
     }
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
-    if (!accessKey) {
-      setState("error");
-      setMessage("Contact form is not configured yet. Add NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY to enable submissions.");
-      return;
-    }
-
     const form = event.currentTarget;
     const formData = new FormData(form);
-    formData.append("access_key", accessKey);
-    formData.append("subject", `Booyaa inquiry - ${topic}`);
-    formData.append("from_name", "Booyaa Website");
+    formData.append("topic", topic);
     formData.append("source", source);
+    formData.append("mode", mode);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         body: formData,
       });
@@ -197,7 +189,7 @@ export function ContactModal({
                   )}
 
                   <div className="flex flex-col gap-3 border-t border-[#d9d0c2] pt-5 sm:flex-row sm:items-center sm:justify-between">
-                    <p className="text-sm leading-6 text-[#536156]">Submits securely through Web3Forms. I reply within one business day.</p>
+                    <p className="text-sm leading-6 text-[#536156]">Sends securely to Booyaa. I reply within one business day.</p>
                     <div className="flex gap-3">
                       <button
                         type="button"
@@ -280,7 +272,7 @@ export function ContactModal({
 
                   <div className="flex flex-col gap-3 border-t border-[#d9d0c2] pt-5 sm:flex-row sm:items-center sm:justify-between">
                     <div className="text-sm leading-6 text-[#536156]">
-                      <p>Submits securely through Web3Forms.</p>
+                      <p>Sends securely to Booyaa.</p>
                       <p>
                         <a className="font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4" href="https://github.com/PPusola" target="_blank" rel="noopener noreferrer">GitHub</a>
                       </p>
