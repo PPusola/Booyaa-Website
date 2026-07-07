@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { ContactModal } from "./ContactModal";
 
 const navLinks = [
@@ -35,8 +35,8 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-2">
-          <ContactModal topic="Project quote" source="Header quote button">
-            Get a Quote
+          <ContactModal topic="15-minute intro call" source="Header CTA">
+            Book a Call
           </ContactModal>
           <a
             href="/"
@@ -58,7 +58,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_1.4fr_1fr]">
         <div>
           <p className="text-lg font-semibold text-[#18231d]">Booyaa</p>
-          <p className="mt-3 max-w-sm text-sm leading-6">Websites, apps, and practical launch support for small teams and local businesses.</p>
+          <p className="mt-3 max-w-sm text-sm leading-6">Websites and lead-capture tools for home-services and local businesses.</p>
           <p className="mt-6 text-sm">© {new Date().getFullYear()} Booyaa.</p>
         </div>
         <div className="grid gap-7 text-sm sm:grid-cols-3">
@@ -75,10 +75,10 @@ export function SiteFooter() {
           <div>
             <p className="font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Projects</p>
             <div className="mt-4 grid gap-2">
+              <a href="/safe-home-restoration" className="hover:text-[#18231d]">Safe Home Restoration</a>
               <a href="/caroline-does-numbers" className="hover:text-[#18231d]">Caroline Does Numbers</a>
+              <a href="/otto" className="hover:text-[#18231d]">Otto</a>
               <a href="/midoid" className="hover:text-[#18231d]">MiDoid</a>
-              <a href="/photosnap" className="hover:text-[#18231d]">PhotoSnap</a>
-              <a href="/spotify-jam-sesh" className="hover:text-[#18231d]">Spotify Jam Sesh</a>
             </div>
           </div>
           <div>
@@ -91,18 +91,15 @@ export function SiteFooter() {
         </div>
         <div className="border-t border-[#d9d0c2] pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
           <p className="font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Contact</p>
-          <p className="mt-4 text-sm leading-6">Have a quick question or a small project in mind?</p>
+          <p className="mt-4 text-sm leading-6">Want to talk through your website? Book a free 15-minute call.</p>
           <div className="mt-5">
-            <ContactModal topic="General inquiry" source="Footer contact" variant="secondary" mode="contact">
-              Contact Me
+            <ContactModal topic="15-minute intro call" source="Footer contact" variant="secondary">
+              Book a 15-minute call
             </ContactModal>
           </div>
           <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm">
             <a href="https://github.com/PPusola" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4 hover:text-[#7b3f2f]">
               GitHub
-            </a>
-            <a href="https://ppusola.github.io" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4 hover:text-[#7b3f2f]">
-              Portfolio
             </a>
           </div>
         </div>
@@ -112,6 +109,31 @@ export function SiteFooter() {
 }
 
 export function PageShell({ children }: { children: ReactNode }) {
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (elements.length === 0) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      elements.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="min-h-screen bg-[#f6f1e8] text-[#1f2a24]">
       <SiteHeader />

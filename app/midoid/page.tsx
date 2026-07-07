@@ -56,6 +56,21 @@ const changelogEntries = [
   },
 ];
 
+const labsPayoffs = [
+  {
+    title: "Native and cross-platform builds",
+    body: "Shipping MiDoid on both macOS and Android means clients who need a real app, not just a website, get one built on techniques already proven in production.",
+  },
+  {
+    title: "Offline-first and local networking",
+    body: "The local-network transfer and QR pairing tested here become the foundation for fast, resilient tools that keep working even when a connection drops.",
+  },
+  {
+    title: "Privacy without the cloud",
+    body: "MiDoid proves a business can move real data without a third-party server. That same approach lets Booyaa build client tools that keep customer data in-house.",
+  },
+];
+
 export default function MiDoidPage() {
   return (
     <PageShell>
@@ -194,6 +209,32 @@ export default function MiDoidPage() {
                 </ul>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Booyaa Labs payoff */}
+      <section className="border-y border-[#d9d0c2] bg-[#1f2a24] px-5 py-20 text-[#f6f1e8] sm:px-8">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d6a26f]">Part of Booyaa Labs</p>
+          <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+            A proving ground for the tech behind client work.
+          </h2>
+          <p className="mt-5 max-w-2xl leading-7 text-[#c8d0c6]">
+            MiDoid is more than a free app. It is where Booyaa tests a new stack and new features in the open, so that once they are proven, they can ship into client projects with confidence.
+          </p>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {labsPayoffs.map((item) => (
+              <article key={item.title} className="border border-[#3a463d] bg-[#243029] p-6">
+                <h3 className="text-xl font-semibold tracking-tight">{item.title}</h3>
+                <p className="mt-4 leading-7 text-[#c8d0c6]">{item.body}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-12">
+            <ContactModal topic="15-minute intro call" source="MiDoid Labs section" variant="light">
+              Book a 15-minute call
+            </ContactModal>
           </div>
         </div>
       </section>

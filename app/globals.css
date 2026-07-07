@@ -4,7 +4,7 @@
 
 :root {
   color-scheme: light;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: #f6f1e8;
 }
 
@@ -19,8 +19,25 @@ body {
   text-rendering: geometricPrecision;
 }
 
+/* Paper-grain overlay across the whole page */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), Georgia, 'Times New Roman', serif;
 }
 
 ::selection {
@@ -30,4 +47,44 @@ body {
 
 section {
   position: relative;
+}
+
+/* Scroll-reveal system: elements with data-reveal start hidden and rise in
+   once the IntersectionObserver in PageShell marks them visible. The hidden
+   state only applies when the html.js class is set by the inline script in
+   the layout, so content stays visible without JavaScript. */
+[data-reveal] {
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.js [data-reveal]:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal='1'] { transition-delay: 0.07s; }
+[data-reveal='2'] { transition-delay: 0.14s; }
+[data-reveal='3'] { transition-delay: 0.21s; }
+[data-reveal='4'] { transition-delay: 0.28s; }
+[data-reveal='5'] { transition-delay: 0.35s; }
+[data-reveal='6'] { transition-delay: 0.42s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.js [data-reveal]:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-reveal] {
+    transition: none;
+  }
 }

@@ -3,36 +3,18 @@
 import { FormEvent, useState } from "react";
 import { PageShell } from "@/components/SiteChrome";
 
-const packages = [
-  {
-    name: "Website Refresh",
-    range: "$50-$200",
-    description: "Best for quick updates to an existing site: spacing, copy, small styling fixes, and cleanup.",
-  },
-  {
-    name: "Small Business Site",
-    range: "$200-$500",
-    description: "Best for a simple new website or landing page for a local business, service, or portfolio.",
-  },
-  {
-    name: "Launch Cleanup",
-    range: "$300-$500",
-    description: "Best for final polish, forms, deployment, analytics, and launch checks before going public.",
-  },
-  {
-    name: "Custom Project",
-    range: "Scoped after a call",
-    description: "Best for ecommerce, dashboards, auth-heavy apps, integrations, or larger builds.",
-  },
-];
-
 type SubmitState = "idle" | "sending" | "success" | "error";
 
 const inputClass =
   "w-full border border-[#d8cec0] bg-[#fffaf2] px-4 py-3 text-sm text-[#1f2a24] outline-none transition placeholder:text-[#8a958c] focus:border-[#1f2a24]";
 
+const callPoints = [
+  ["What we cover", "Your business, how customers find you today, and what your website should be doing for you."],
+  ["What you get", "A clear scope and price for your project, whether or not we end up working together."],
+  ["What it costs", "Nothing. It's 15 minutes, no obligation, and no pressure."],
+];
+
 export default function QuotePage() {
-  const [selected, setSelected] = useState(packages[0]);
   const [state, setState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
 
@@ -58,21 +40,19 @@ export default function QuotePage() {
 
     const formData = new FormData(event.currentTarget);
     formData.append("access_key", accessKey);
-    formData.append("subject", `Booyaa quote request - ${selected.name}`);
+    formData.append("subject", "Booyaa inquiry - 15-minute intro call");
     formData.append("from_name", "Booyaa Website");
-    formData.append("selected_package", selected.name);
-    formData.append("package_range", selected.range);
-    formData.append("source", "Quote page");
+    formData.append("source", "Book a call page");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
       const result = await response.json();
 
-      if (!response.ok || !result.success) throw new Error(result.message || "Unable to send quote request.");
+      if (!response.ok || !result.success) throw new Error(result.message || "Unable to send request.");
 
       event.currentTarget.reset();
       setState("success");
-      setMessage("Thanks. Your quote request was sent.");
+      setMessage("Thanks. I will reach out within one business day to set up the call.");
     } catch (error) {
       setState("error");
       setMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
@@ -83,60 +63,38 @@ export default function QuotePage() {
     <PageShell>
       <section className="px-5 py-20 sm:px-8 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Get a Quote</p>
-            <h1 className="mt-4 text-5xl font-semibold leading-tight tracking-tight text-[#18231d] sm:text-6xl">Pick a starting point.</h1>
+          <div data-reveal className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Book a call</p>
+            <h1 className="mt-4 text-5xl font-semibold leading-tight tracking-tight text-[#18231d] sm:text-6xl">15 minutes. A clear plan for your website.</h1>
             <p className="mt-6 text-lg leading-8 text-[#536156]">
-              Choose the closest package and send a short note. The public ranges stay simple; complex builds move to a custom quote.
+              Every project is scoped individually, because a restoration company and a bookkeeper need different things from their site. Tell me about your business and I&apos;ll set up a quick call.
             </p>
           </div>
 
           <div className="mt-14 grid gap-8 lg:grid-cols-[1fr_0.9fr]">
-            <div className="grid gap-4">
-              {packages.map((item) => (
-                <button
-                  key={item.name}
-                  type="button"
-                  onClick={() => setSelected(item)}
-                  className={`border p-5 text-left transition ${
-                    selected.name === item.name
-                      ? "border-[#1f2a24] bg-[#fffaf2] shadow-[10px_10px_0_#ded4c6]"
-                      : "border-[#d9d0c2] bg-[#fffaf2] hover:border-[#1f2a24]"
-                  }`}
-                >
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                    <div>
-                      <h2 className="text-2xl font-semibold tracking-tight text-[#18231d]">{item.name}</h2>
-                      <p className="mt-3 max-w-2xl leading-7 text-[#536156]">{item.description}</p>
-                    </div>
-                    <span className="shrink-0 text-lg font-semibold text-[#7b3f2f]">{item.range}</span>
-                  </div>
-                </button>
+            <div data-reveal="1" className="grid h-fit gap-4">
+              {callPoints.map(([title, text]) => (
+                <div key={title} className="border border-[#d9d0c2] bg-[#fffaf2] p-5">
+                  <h2 className="text-2xl font-semibold tracking-tight text-[#18231d]">{title}</h2>
+                  <p className="mt-3 max-w-2xl leading-7 text-[#536156]">{text}</p>
+                </div>
               ))}
             </div>
 
-            <form onSubmit={handleSubmit} className="border border-[#d9d0c2] bg-[#fffaf2] p-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#7b3f2f]">Selected package</p>
-              <p className="mt-2 text-2xl font-semibold tracking-tight text-[#18231d]">{selected.name}</p>
-              <p className="mt-1 text-[#536156]">{selected.range}</p>
+            <form data-reveal="2" onSubmit={handleSubmit} className="border border-[#d9d0c2] bg-[#fffaf2] p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#7b3f2f]">Request the call</p>
+              <p className="mt-2 text-2xl font-semibold tracking-tight text-[#18231d]">Tell me about your business</p>
 
               <div className="mt-8 space-y-4">
                 <input className={inputClass} name="name" required placeholder="Your name" />
                 <input className={inputClass} name="email" type="email" required placeholder="Email address" />
-                <input className={inputClass} name="project" placeholder="Business or project name" />
-                <select className={inputClass} name="timeline" defaultValue="Not sure yet">
-                  <option>Not sure yet</option>
-                  <option>Flexible</option>
-                  <option>Standard</option>
-                  <option>Priority - 2-3 weeks (+15%)</option>
-                  <option>Rush - 7-14 days (+25%)</option>
-                  <option>Emergency - under 7 days (custom quote)</option>
-                </select>
+                <input className={inputClass} name="phone" type="tel" placeholder="Phone (optional)" />
+                <input className={inputClass} name="project" placeholder="Business name" />
                 <textarea
                   className={`${inputClass} min-h-36 resize-y`}
                   name="message"
                   required
-                  placeholder="What do you need built or refreshed?"
+                  placeholder="A few sentences about your business, your current website if you have one, and where your customers come from today."
                 />
                 <label className="block border border-[#d9d0c2] bg-[#fdf8ef] p-4">
                   <span className="block text-sm font-semibold text-[#18231d]">Optional reference image</span>
@@ -163,7 +121,7 @@ export default function QuotePage() {
                 disabled={state === "sending"}
                 className="mt-6 inline-flex w-full items-center justify-center bg-[#1f2a24] px-6 py-3 text-sm font-semibold text-[#f6f1e8] transition hover:bg-[#7b3f2f] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {state === "sending" ? "Sending..." : "Send quote request"}
+                {state === "sending" ? "Sending..." : "Request the call"}
               </button>
             </form>
           </div>
