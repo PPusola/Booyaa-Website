@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+import { BrowserFrame } from "@/components/BrowserFrame";
 
 export const metadata: Metadata = {
   title: "Websites for Home-Services Businesses",
@@ -17,7 +18,10 @@ const clientWork = [
     type: "Client website",
     status: "Live",
     href: "/caroline-does-numbers",
-    text: "A trust-first service website for a bookkeeping and tax business, built to explain the offer fast and make contact easy.",
+    text: "A trust-first service website for a bookkeeping and tax business, built to explain the offer fast and make contact easy. Readable sections, direct calls to action, and a contact path that turns visitors into booked clients.",
+    highlights: ["Service-focused page structure", "Trust-first copy flow", "Clear contact path"],
+    image: "/screenshots/caroline.png",
+    url: "carolinedoesnumbers.com",
   },
 ];
 
@@ -92,7 +96,7 @@ export default function Home() {
             href="/safe-home-restoration"
             className="group block border border-[#1f2a24] bg-[#fffaf2] shadow-[6px_6px_0_#ded4c6] transition-all duration-300 hover:-translate-y-1 hover:shadow-[14px_14px_0_#ded4c6]"
           >
-            <div className="grid gap-8 p-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-2 lg:items-center">
               <div>
                 <div className="flex flex-wrap items-center gap-3">
                   <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Featured case study</p>
@@ -106,39 +110,58 @@ export default function Home() {
                 <p className="mt-4 max-w-2xl leading-7 text-[#536156]">
                   A full production website for Edmonton&apos;s 24/7 emergency restoration company: six service pages built for local search, a persistent emergency call flow, and estimate forms that log every lead automatically. Designed for the customer standing in a flooded basement at 2 AM.
                 </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {["24/7 click-to-call emergency flow", "Local SEO service and area pages", "Automatic lead capture and logging"].map((item) => (
+                    <span key={item} className="border border-[#d9d0c2] bg-[#fdf8ef] px-3 py-1.5 text-xs font-semibold text-[#18231d]">
+                      {item}
+                    </span>
+                  ))}
+                </div>
                 <p className="mt-6 text-sm font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4">
                   Read the case study
                   <span aria-hidden="true" className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1.5">&rarr;</span>
                 </p>
               </div>
-              <div className="grid gap-3">
-                {["24/7 click-to-call emergency flow", "Local SEO service and area pages", "Automatic lead capture and logging"].map((item) => (
-                  <div key={item} className="border border-[#d9d0c2] bg-[#fdf8ef] p-4 text-sm font-semibold text-[#18231d]">
-                    {item}
-                  </div>
-                ))}
-              </div>
+              <BrowserFrame
+                src="/screenshots/safe-home.png"
+                url="safehomerestoration.ca"
+                alt="Safe Home Solution and Restoration website homepage"
+              />
             </div>
           </a>
 
-          <div className="mt-5 grid gap-5 md:grid-cols-2">
+          <div className="mt-5 grid gap-5">
             {clientWork.map((project) => (
               <a
                 data-reveal="2"
                 key={project.name}
                 href={project.href}
-                className="border border-[#d9d0c2] bg-[#fffaf2] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1f2a24] hover:shadow-[8px_8px_0_#ded4c6]"
+                className="group block border border-[#1f2a24] bg-[#fffaf2] shadow-[6px_6px_0_#ded4c6] transition-all duration-300 hover:-translate-y-1 hover:shadow-[14px_14px_0_#ded4c6]"
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-2 lg:items-center">
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">{project.type}</p>
-                    <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#18231d]">{project.name}</h3>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">{project.type}</p>
+                      <span className="border border-[#d8cec0] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#536156]">
+                        {project.status}
+                      </span>
+                    </div>
+                    <h3 className="mt-4 text-3xl font-semibold tracking-tight text-[#18231d] sm:text-4xl">{project.name}</h3>
+                    <p className="mt-4 max-w-2xl leading-7 text-[#536156]">{project.text}</p>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {project.highlights.map((item) => (
+                        <span key={item} className="border border-[#d9d0c2] bg-[#fdf8ef] px-3 py-1.5 text-xs font-semibold text-[#18231d]">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="mt-6 text-sm font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4">
+                      Read the case study
+                      <span aria-hidden="true" className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1.5">&rarr;</span>
+                    </p>
                   </div>
-                  <span className="border border-[#d8cec0] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#536156]">
-                    {project.status}
-                  </span>
+                  <BrowserFrame src={project.image} url={project.url} alt={`${project.name} website homepage`} />
                 </div>
-                <p className="mt-5 leading-7 text-[#536156]">{project.text}</p>
               </a>
             ))}
           </div>

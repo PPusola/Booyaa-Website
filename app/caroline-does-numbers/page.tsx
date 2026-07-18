@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+import { BrowserFrame } from "@/components/BrowserFrame";
 
 export const metadata: Metadata = {
   title: "Caroline Does Numbers Website Case Study",
@@ -35,7 +36,7 @@ export default function CarolineDoesNumbersPage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="https://project-inuil.vercel.app/"
+                href="https://www.carolinedoesnumbers.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-[#1f2a24] px-5 py-2.5 text-sm font-semibold text-[#f6f1e8] transition hover:bg-[#7b3f2f]"
@@ -59,6 +60,16 @@ export default function CarolineDoesNumbersPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="px-5 pb-16 sm:px-8">
+        <div data-reveal className="mx-auto max-w-5xl">
+          <BrowserFrame
+            src="/screenshots/caroline.png"
+            url="carolinedoesnumbers.com"
+            alt="Caroline Does Numbers website homepage"
+          />
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
+import { BrowserFrame } from "@/components/BrowserFrame";
 
 export const metadata: Metadata = {
   title: "Safe Home Restoration Website Case Study",
@@ -86,6 +87,16 @@ export default function SafeHomeRestorationPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="px-5 pb-16 sm:px-8">
+        <div data-reveal className="mx-auto max-w-5xl">
+          <BrowserFrame
+            src="/screenshots/safe-home.png"
+            url="safehomerestoration.ca"
+            alt="Safe Home Solution and Restoration website homepage"
+          />
         </div>
       </section>
 
