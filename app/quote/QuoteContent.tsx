@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import { PageShell } from "@/components/SiteChrome";
 
 type SubmitState = "idle" | "sending" | "success" | "error";
@@ -15,6 +16,7 @@ const callPoints = [
 ];
 
 export default function QuotePage() {
+  const router = useRouter();
   const [state, setState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
 
@@ -23,7 +25,10 @@ export default function QuotePage() {
     setState("sending");
     setMessage("");
 
-    const attachment = event.currentTarget.elements.namedItem("attachment") as HTMLInputElement | null;
+    // currentTarget is nulled once the handler yields, so hold the form here.
+    const form = event.currentTarget;
+
+    const attachment = form.elements.namedItem("attachment") as HTMLInputElement | null;
     const file = attachment?.files?.[0];
     if (file && file.size > 5 * 1024 * 1024) {
       setState("error");
@@ -31,7 +36,7 @@ export default function QuotePage() {
       return;
     }
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(form);
     formData.append("topic", "15-minute intro call");
     formData.append("source", "Book a call page");
     formData.append("mode", "quote");
@@ -42,9 +47,9 @@ export default function QuotePage() {
 
       if (!response.ok || !result.success) throw new Error(result.message || "Unable to send request.");
 
-      event.currentTarget.reset();
+      form.reset();
       setState("success");
-      setMessage("Thanks. I will reach out within one business day to set up the call.");
+      router.push("/quote/received");
     } catch (error) {
       setState("error");
       setMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
@@ -110,10 +115,10 @@ export default function QuotePage() {
 
               <button
                 type="submit"
-                disabled={state === "sending"}
+                disabled={state === "sending" || state === "success"}
                 className="mt-6 inline-flex w-full items-center justify-center bg-[#1f2a24] px-6 py-3 text-sm font-semibold text-[#f6f1e8] transition hover:bg-[#7b3f2f] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {state === "sending" ? "Sending..." : "Request the call"}
+                {state === "sending" ? "Sending..." : state === "success" ? "Request sent" : "Request the call"}
               </button>
             </form>
           </div>

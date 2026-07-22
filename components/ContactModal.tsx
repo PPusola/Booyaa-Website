@@ -2,6 +2,7 @@
 
 import { FormEvent, ReactNode, useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { useRouter } from "next/navigation";
 
 type ContactModalProps = {
   children: ReactNode;
@@ -23,6 +24,7 @@ export function ContactModal({
   variant = "primary",
   mode = "quote",
 }: ContactModalProps) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [state, setState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
@@ -90,11 +92,16 @@ export function ContactModal({
 
       form.reset();
       setState("success");
-      setMessage(
-        mode === "quote"
-          ? "Thanks. I will reach out within one business day to set up the call."
-          : "Thanks. Your message was sent, and I will get back to you soon.",
-      );
+
+      // Quote requests land on a real confirmation URL so the conversion is
+      // trackable. Plain contact messages stay inline in the modal.
+      if (mode === "quote") {
+        setOpen(false);
+        router.push("/quote/received");
+        return;
+      }
+
+      setMessage("Thanks. Your message was sent, and I will get back to you soon.");
     } catch (error) {
       setState("error");
       setMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
