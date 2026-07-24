@@ -25,21 +25,6 @@ const clientWork = [
   },
 ];
 
-const labs = [
-  {
-    name: "Otto",
-    tag: "AI assistant",
-    href: "/otto",
-    text: "A local-first AI assistant with tool use, encrypted memory, and voice control. Proven here, it becomes the after-hours intake bots and lead-capture tools Booyaa rolls out to clients next.",
-  },
-  {
-    name: "MiDoid",
-    tag: "Shipped app",
-    href: "/midoid",
-    text: "A macOS and Android app for browsing and transferring files over Wi-Fi. The native and offline-first techniques it tests feed directly into faster, more reliable client builds.",
-  },
-];
-
 export default function Home() {
   return (
     <PageShell>
@@ -181,34 +166,6 @@ export default function Home() {
             <ContactModal topic="15-minute intro call" source="Homepage pricing section">
               Book a 15-minute call
             </ContactModal>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-5 py-20 sm:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div data-reveal className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Booyaa Labs</p>
-              <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d] sm:text-5xl">R&amp;D that sharpens the client work.</h2>
-              <p className="mt-4 leading-7 text-[#536156]">
-                Independent engineering projects, from a shipped file-transfer app to a local AI assistant. This is where the techniques behind Booyaa&apos;s client tools get built and tested.
-              </p>
-            </div>
-          </div>
-          <div className="grid gap-5 md:grid-cols-2">
-            {labs.map((project, index) => (
-              <a
-                data-reveal={String(index + 1)}
-                key={project.name}
-                href={project.href}
-                className="border border-[#d9d0c2] bg-[#fffaf2] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1f2a24] hover:shadow-[8px_8px_0_#ded4c6]"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">{project.tag}</p>
-                <h3 className="mt-3 text-xl font-semibold tracking-tight text-[#18231d]">{project.name}</h3>
-                <p className="mt-4 text-sm leading-6 text-[#536156]">{project.text}</p>
-              </a>
-            ))}
           </div>
         </div>
       </section>

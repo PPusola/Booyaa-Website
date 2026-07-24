@@ -30,9 +30,11 @@ export function ContactModal({
   const [message, setMessage] = useState("");
   const [mounted, setMounted] = useState(false);
 
+  // Every variant carries a 1px border, including the solid one, so a primary
+  // button lines up edge-for-edge with the outlined buttons it sits beside.
   const buttonClass =
     variant === "primary"
-      ? "inline-flex items-center justify-center bg-[#1f2a24] px-5 py-2.5 text-sm font-semibold text-[#f6f1e8] transition hover:bg-[#7b3f2f]"
+      ? "inline-flex items-center justify-center border border-[#1f2a24] bg-[#1f2a24] px-5 py-2.5 text-sm font-semibold text-[#f6f1e8] transition hover:border-[#7b3f2f] hover:bg-[#7b3f2f]"
       : variant === "secondary"
         ? "inline-flex items-center justify-center border border-[#b8ad9d] px-5 py-2.5 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
         : variant === "light"

@@ -15,15 +15,34 @@ const navLinks = [
 
 const displayFont = { fontFamily: "var(--font-display), Georgia, serif" };
 
-function BrandLogo({ className = "" }: { className?: string }) {
+/**
+ * Lockup of the cat mark and the Booyaa wordmark. The mark is decorative here
+ * (`alt=""`) because the name sits right beside it as real text, and every
+ * caller wraps this in a link that already carries an aria-label.
+ */
+function BrandLogo({
+  markClassName = "w-[4.5rem]",
+  nameClassName = "text-2xl",
+}: {
+  markClassName?: string;
+  nameClassName?: string;
+}) {
   return (
-    <Image
-      src="/booyaa-logo.png"
-      alt="Booyaa"
-      width={680}
-      height={460}
-      className={`block h-auto w-full object-contain ${className}`}
-    />
+    <span className="inline-flex items-center gap-2.5">
+      <Image
+        src="/booyaa-logo.png"
+        alt=""
+        width={680}
+        height={460}
+        className={`block h-auto shrink-0 object-contain ${markClassName}`}
+      />
+      <span
+        style={displayFont}
+        className={`font-semibold tracking-tight text-[#18231d] ${nameClassName}`}
+      >
+        Booyaa
+      </span>
+    </span>
   );
 }
 
@@ -72,9 +91,9 @@ export function SiteHeader() {
           <a
             href="/"
             aria-label="Booyaa home"
-            className="block w-24 shrink-0 transition-opacity hover:opacity-80 sm:w-28"
+            className="flex shrink-0 items-center transition-opacity hover:opacity-80"
           >
-            <BrandLogo />
+            <BrandLogo markClassName="w-14 sm:w-[4.5rem]" nameClassName="text-xl sm:text-2xl" />
           </a>
 
           <div className="ml-auto flex items-center gap-2">
@@ -90,7 +109,7 @@ export function SiteHeader() {
               onClick={() => setMenuOpen(true)}
               aria-expanded={menuOpen}
               aria-label="Open menu"
-              className="group inline-flex items-center gap-2 border border-[#b8ad9d] px-4 py-2 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24] hover:bg-[#fffaf2]"
+              className="group inline-flex items-center gap-2 border border-[#b8ad9d] px-4 py-2.5 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24] hover:bg-[#fffaf2]"
             >
               <span className="hidden sm:inline">Menu</span>
               <span className="relative block h-3.5 w-5">
@@ -103,9 +122,11 @@ export function SiteHeader() {
         </div>
       </header>
 
-      {/* Full-screen overlay menu */}
+      {/* Full-screen overlay menu. `overflow-hidden` clips the decorative arc
+          SVG below, which is intentionally wider than the viewport; without it
+          the arcs extend the document width and cause horizontal scroll. */}
       <div
-        className={`fixed inset-0 z-[100] transition-opacity duration-500 ${
+        className={`fixed inset-0 z-[100] overflow-hidden transition-opacity duration-500 ${
           menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-hidden={!menuOpen}
@@ -133,9 +154,9 @@ export function SiteHeader() {
               href="/"
               onClick={() => setMenuOpen(false)}
               aria-label="Booyaa home"
-              className="block w-24 transition-opacity hover:opacity-80 sm:w-28"
+              className="flex items-center transition-opacity hover:opacity-80"
             >
-              <BrandLogo />
+              <BrandLogo markClassName="w-14 sm:w-[4.5rem]" nameClassName="text-xl sm:text-2xl" />
             </a>
             <button
               type="button"
@@ -191,7 +212,7 @@ export function SiteHeader() {
                 href="https://github.com/PPusola"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 w-11 items-center justify-center border border-[#b8ad9d] text-[#1f2a24] transition hover:border-[#1f2a24] hover:bg-[#fffaf2]"
+                className="inline-flex h-[42px] w-[42px] items-center justify-center border border-[#b8ad9d] text-[#1f2a24] transition hover:border-[#1f2a24] hover:bg-[#fffaf2]"
                 aria-label="GitHub"
                 title="GitHub"
               >
@@ -212,7 +233,7 @@ export function SiteFooter() {
     <footer className="border-t border-[#d9d0c2] bg-[#f6f1e8] px-5 py-12 text-[#536156] sm:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_1.4fr_1fr]">
         <div>
-          <a href="/" aria-label="Booyaa home" className="block w-28 transition-opacity hover:opacity-80">
+          <a href="/" aria-label="Booyaa home" className="inline-flex items-center transition-opacity hover:opacity-80">
             <BrandLogo />
           </a>
           <p className="mt-3 max-w-sm text-sm leading-6">Websites and lead-capture tools for home-services and local businesses.</p>

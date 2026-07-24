@@ -64,15 +64,13 @@ export default function Products() {
             {clientWork.map((project, index) => (
               <article data-reveal={String(index + 1)} key={project.name} className="flex min-h-72 flex-col justify-between border border-[#d9d0c2] bg-[#fffaf2] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[8px_8px_0_#ded4c6]">
                 <div>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">{project.label}</p>
-                      <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#18231d]">{project.name}</h2>
-                    </div>
-                    <span className="shrink-0 border border-[#d8cec0] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#536156]">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">{project.label}</p>
+                    <span className="border border-[#d8cec0] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#536156]">
                       {project.status}
                     </span>
                   </div>
+                  <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#18231d]">{project.name}</h2>
                   <p className="mt-6 leading-7 text-[#536156]">{project.text}</p>
                 </div>
                 <div className="mt-8 flex flex-wrap gap-3">

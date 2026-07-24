@@ -39,7 +39,7 @@ export default function CarolineDoesNumbersPage() {
                 href="https://www.carolinedoesnumbers.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center bg-[#1f2a24] px-5 py-2.5 text-sm font-semibold text-[#f6f1e8] transition hover:bg-[#7b3f2f]"
+                className="inline-flex items-center justify-center border border-[#1f2a24] bg-[#1f2a24] px-5 py-2.5 text-sm font-semibold text-[#f6f1e8] transition hover:border-[#7b3f2f] hover:bg-[#7b3f2f]"
               >
                 View live site
               </a>
