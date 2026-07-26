@@ -3,6 +3,36 @@ import nodemailer from "nodemailer";
 
 export const runtime = "nodejs";
 
+// Best-effort in-memory rate limiting. On serverless this is per-instance and
+// resets on cold start, so it is not a hard guarantee, but it blunts bursts
+// from a single IP cheaply and without extra infrastructure. Pair with the
+// honeypot below; move to a shared store (e.g. Upstash) if abuse persists.
+const RATE_LIMIT_MAX = 5; // submissions per window
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const rateLimitHits = new Map<string, number[]>();
+
+function isRateLimited(ip: string) {
+  const now = Date.now();
+  const recent = (rateLimitHits.get(ip) ?? []).filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+  recent.push(now);
+  rateLimitHits.set(ip, recent);
+
+  // Opportunistic cleanup so the map does not grow unbounded.
+  if (rateLimitHits.size > 5000) {
+    for (const [key, times] of rateLimitHits) {
+      if (times.every((t) => now - t >= RATE_LIMIT_WINDOW_MS)) rateLimitHits.delete(key);
+    }
+  }
+
+  return recent.length > RATE_LIMIT_MAX;
+}
+
+function clientIp(request: Request) {
+  const forwarded = request.headers.get("x-forwarded-for");
+  if (forwarded) return forwarded.split(",")[0].trim();
+  return request.headers.get("x-real-ip") ?? "unknown";
+}
+
 const maxAttachmentSize = 5 * 1024 * 1024;
 const allowedAttachmentTypes = new Set([
   "application/pdf",
@@ -41,7 +71,20 @@ function requireEnv(key: string) {
 
 export async function POST(request: Request) {
   try {
+    if (isRateLimited(clientIp(request))) {
+      return NextResponse.json(
+        { success: false, message: "Too many requests. Please try again in a few minutes." },
+        { status: 429 },
+      );
+    }
+
     const formData = await request.formData();
+
+    // Honeypot: real users never see or fill this field. If it has a value the
+    // submission is a bot, so return a success shape without sending anything.
+    if (getString(formData, "company_website")) {
+      return NextResponse.json({ success: true });
+    }
 
     const name = getString(formData, "name");
     const email = getString(formData, "email");

@@ -3,6 +3,7 @@
 import { FormEvent, ReactNode, useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
+import { reportLeadConversion } from "@/lib/gtag";
 
 type ContactModalProps = {
   children: ReactNode;
@@ -96,13 +97,15 @@ export function ContactModal({
       setState("success");
 
       // Quote requests land on a real confirmation URL so the conversion is
-      // trackable. Plain contact messages stay inline in the modal.
+      // trackable there (see /quote/received). Plain contact messages stay
+      // inline in the modal, so fire the lead conversion here instead.
       if (mode === "quote") {
         setOpen(false);
         router.push("/quote/received");
         return;
       }
 
+      reportLeadConversion("contact");
       setMessage("Thanks. Your message was sent, and I will get back to you soon.");
     } catch (error) {
       setState("error");
@@ -144,6 +147,14 @@ export function ContactModal({
             </div>
 
             <form onSubmit={handleSubmit} className="min-h-0 overflow-y-auto bg-[#f6f1e8] p-5 sm:p-6">
+              {/* Honeypot: hidden from users, tempting to bots. A filled value is
+                  rejected server-side. Kept out of the tab order and off autofill. */}
+              <div aria-hidden="true" className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden">
+                <label>
+                  Company website
+                  <input type="text" name="company_website" tabIndex={-1} autoComplete="off" />
+                </label>
+              </div>
               {mode === "quote" ? (
                 <div className="mx-auto max-w-2xl space-y-5">
                   <div className="grid gap-4 sm:grid-cols-2">

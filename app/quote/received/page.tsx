@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/SiteChrome";
+import { ConversionPing } from "@/components/ConversionPing";
 
 export const metadata: Metadata = {
   title: "Request Received",
@@ -30,6 +31,7 @@ const reading = [
 export default function QuoteReceivedPage() {
   return (
     <PageShell>
+      <ConversionPing context="quote" />
       <section className="px-5 py-20 sm:px-8 md:py-24">
         <div className="mx-auto max-w-7xl">
           <div data-reveal className="max-w-3xl">
