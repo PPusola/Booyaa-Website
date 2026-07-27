@@ -2,7 +2,6 @@
 
 import { FormEvent, ReactNode, useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { useRouter } from "next/navigation";
 import { reportLeadConversion } from "@/lib/gtag";
 
 type ContactModalProps = {
@@ -25,7 +24,6 @@ export function ContactModal({
   variant = "primary",
   mode = "quote",
 }: ContactModalProps) {
-  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [state, setState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
@@ -97,11 +95,12 @@ export function ContactModal({
       setState("success");
 
       // Quote requests land on a real confirmation URL so the conversion is
-      // trackable there (see /quote/received). Plain contact messages stay
-      // inline in the modal, so fire the lead conversion here instead.
+      // trackable there (see /quote/received). A full-page navigation (not a
+      // client-side router.push) is deliberate: it produces a genuine page load
+      // so URL-based conversion tracking in Google Ads fires reliably. Plain
+      // contact messages stay inline in the modal and fire the event below.
       if (mode === "quote") {
-        setOpen(false);
-        router.push("/quote/received");
+        window.location.assign("/quote/received");
         return;
       }
 
