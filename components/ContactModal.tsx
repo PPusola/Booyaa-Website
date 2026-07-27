@@ -147,14 +147,6 @@ export function ContactModal({
             </div>
 
             <form onSubmit={handleSubmit} className="min-h-0 overflow-y-auto bg-[#f6f1e8] p-5 sm:p-6">
-              {/* Honeypot: hidden from users, tempting to bots. A filled value is
-                  rejected server-side. Kept out of the tab order and off autofill. */}
-              <div aria-hidden="true" className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden">
-                <label>
-                  Company website
-                  <input type="text" name="company_website" tabIndex={-1} autoComplete="off" />
-                </label>
-              </div>
               {mode === "quote" ? (
                 <div className="mx-auto max-w-2xl space-y-5">
                   <div className="grid gap-4 sm:grid-cols-2">

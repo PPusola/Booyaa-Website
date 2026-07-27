@@ -5,8 +5,8 @@ export const runtime = "nodejs";
 
 // Best-effort in-memory rate limiting. On serverless this is per-instance and
 // resets on cold start, so it is not a hard guarantee, but it blunts bursts
-// from a single IP cheaply and without extra infrastructure. Pair with the
-// honeypot below; move to a shared store (e.g. Upstash) if abuse persists.
+// from a single IP cheaply and without extra infrastructure. Move to a shared
+// store (e.g. Upstash) if abuse ever persists.
 const RATE_LIMIT_MAX = 5; // submissions per window
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
 const rateLimitHits = new Map<string, number[]>();
@@ -79,12 +79,6 @@ export async function POST(request: Request) {
     }
 
     const formData = await request.formData();
-
-    // Honeypot: real users never see or fill this field. If it has a value the
-    // submission is a bot, so return a success shape without sending anything.
-    if (getString(formData, "company_website")) {
-      return NextResponse.json({ success: true });
-    }
 
     const name = getString(formData, "name");
     const email = getString(formData, "email");
