@@ -51,13 +51,42 @@ export function pageview(url: string) {
 }
 
 /**
+ * Whether a lead of this `context` has already been reported in the current
+ * browser session. Guards against inflating conversions when a visitor
+ * refreshes or re-lands on /quote/received. If sessionStorage is unavailable
+ * (private mode, blocked), we treat the lead as not-yet-reported and fall
+ * through, preferring a possible double-count over losing the conversion.
+ */
+function alreadyReported(context: string): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.sessionStorage.getItem(`booyaa_lead_${context}`) !== null;
+  } catch {
+    return false;
+  }
+}
+
+function markReported(context: string) {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.setItem(`booyaa_lead_${context}`, "1");
+  } catch {
+    // sessionStorage unavailable — nothing to persist, so the next call may
+    // report again. Acceptable given the alternative is dropping conversions.
+  }
+}
+
+/**
  * Fire a lead conversion. Records a GA4 `generate_lead` event and, when the
  * Google Ads env vars are present, a Google Ads conversion. `context`
- * distinguishes where the lead came from (e.g. "quote", "contact").
+ * distinguishes where the lead came from (e.g. "quote", "contact"). Each
+ * context is counted at most once per browser session.
  */
 export function reportLeadConversion(context: string) {
   const send = gtag();
   if (!send) return;
+
+  if (alreadyReported(context)) return;
 
   send("event", "generate_lead", {
     event_category: "engagement",
@@ -69,4 +98,6 @@ export function reportLeadConversion(context: string) {
       send_to: `${ADS_ID}/${CONVERSION_LABEL}`,
     });
   }
+
+  markReported(context);
 }

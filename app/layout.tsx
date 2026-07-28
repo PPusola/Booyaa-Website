@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import { Analytics } from '@/components/Analytics';
 import { RouteAnalytics } from '@/components/RouteAnalytics';
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import './globals.css';
 
 const inter = Inter({
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Analytics />
         <RouteAnalytics />
+        <VercelAnalytics />
       </body>
     </html>
   );
