@@ -134,17 +134,41 @@ export function SiteHeader() {
         aria-modal="true"
         aria-label="Site menu"
       >
-        {/* Paper background + subtle decorative arcs */}
+        {/* Paper background + decorative arcs, recolored after the two cats on
+            the brand mark: charcoal for the black cat, ginger for the tabby. */}
         <div className="absolute inset-0 bg-[#f6f1e8]" />
+        <div
+          aria-hidden="true"
+          className="absolute right-[-15%] top-[-10%] h-[70%] w-[70%] rounded-full opacity-[0.14] blur-3xl"
+          style={{ background: "radial-gradient(circle, #c1682b, transparent 70%)" }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute bottom-[-15%] left-[-10%] h-[55%] w-[55%] rounded-full opacity-[0.10] blur-3xl"
+          style={{ background: "radial-gradient(circle, #221c16, transparent 70%)" }}
+        />
+        {/* Ginger arcs, anchored top-right */}
         <svg
           aria-hidden="true"
-          className="absolute right-[-10%] top-1/2 h-[130%] w-auto -translate-y-1/2 text-[#e2d8c8]"
+          className="absolute right-[-15%] top-[-15%] h-[110%] w-auto"
           viewBox="0 0 600 600"
           fill="none"
         >
-          <circle cx="450" cy="300" r="260" stroke="currentColor" strokeWidth="1.5" />
-          <circle cx="500" cy="300" r="330" stroke="currentColor" strokeWidth="1.5" />
-          <circle cx="540" cy="300" r="400" stroke="currentColor" strokeWidth="1.5" />
+          <circle cx="450" cy="300" r="260" stroke="#c1682b" strokeOpacity="0.32" strokeWidth="1.5" />
+          <circle cx="500" cy="300" r="330" stroke="#c1682b" strokeOpacity="0.18" strokeWidth="1.5" />
+          <circle cx="540" cy="300" r="400" stroke="#c1682b" strokeOpacity="0.12" strokeWidth="1.5" />
+        </svg>
+        {/* Charcoal arcs, mirrored bottom-left, so the pattern frames the menu
+            content from both corners instead of sitting in one spot. */}
+        <svg
+          aria-hidden="true"
+          className="absolute left-[-15%] bottom-[-15%] h-[110%] w-auto rotate-180"
+          viewBox="0 0 600 600"
+          fill="none"
+        >
+          <circle cx="450" cy="300" r="260" stroke="#221c16" strokeOpacity="0.22" strokeWidth="1.5" />
+          <circle cx="500" cy="300" r="330" stroke="#221c16" strokeOpacity="0.14" strokeWidth="1.5" />
+          <circle cx="540" cy="300" r="400" stroke="#221c16" strokeOpacity="0.09" strokeWidth="1.5" />
         </svg>
 
         <div className="relative flex h-full flex-col">
@@ -187,8 +211,8 @@ export function SiteHeader() {
                       menuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
                     } ${
                       isActive(link.href)
-                        ? "text-[#7b3f2f]"
-                        : "text-[#18231d] hover:text-[#7b3f2f]"
+                        ? "text-[#c1682b]"
+                        : "text-[#18231d] hover:text-[#c1682b]"
                     }`}
                   >
                     {link.label}
