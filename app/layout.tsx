@@ -20,16 +20,16 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   metadataBase: new URL('https://booyaa.net'),
   title: {
-    default: 'Booyaa | Websites for Home-Services Businesses',
+    default: 'Booyaa | Edmonton Web Design & Development for Local Businesses',
     template: '%s | Booyaa',
   },
-  description: 'Booyaa builds websites and lead-capture tools for home-services and local businesses. Built to rank in local search and turn visitors into phone calls.',
+  description: 'Booyaa is an Edmonton web design and development studio building websites and lead-capture tools for home-services and local businesses. Built to rank in local search and turn visitors into phone calls.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Booyaa | Websites for Home-Services Businesses',
-    description: 'Websites and lead-capture tools for home-services and local businesses.',
+    title: 'Booyaa | Edmonton Web Design & Development for Local Businesses',
+    description: 'Edmonton web design and development for home-services and local businesses.',
     url: 'https://booyaa.net',
     siteName: 'Booyaa',
     type: 'website',
@@ -46,8 +46,18 @@ const structuredData = {
   url: 'https://booyaa.net',
   image: 'https://booyaa.net/opengraph-image.png',
   description:
-    'Booyaa builds websites and lead-capture tools for home-services and local businesses. Built to rank in local search and turn visitors into phone calls.',
+    'Booyaa is an Edmonton web design and development studio building websites and lead-capture tools for home-services and local businesses. Built to rank in local search and turn visitors into phone calls.',
   email: 'priyanshu@booyaa.net',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Edmonton',
+    addressRegion: 'AB',
+    addressCountry: 'CA',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Edmonton' },
+    { '@type': 'State', name: 'Alberta' },
+  ],
   knowsAbout: [
     'Web design',
     'Web development',

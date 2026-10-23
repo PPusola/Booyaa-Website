@@ -4,9 +4,9 @@ import { PageShell } from "@/components/SiteChrome";
 import { BrowserFrame } from "@/components/BrowserFrame";
 
 export const metadata: Metadata = {
-  title: "Websites for Home-Services Businesses",
+  title: "Edmonton Web Design & Development for Local Businesses",
   description:
-    "Booyaa builds websites and lead-capture tools for restoration companies, contractors, and local service businesses that need more phone calls.",
+    "Booyaa is an Edmonton web design and development studio building websites and lead-capture tools for restoration companies, contractors, and local service businesses that need more phone calls.",
   alternates: {
     canonical: "/",
   },
@@ -32,13 +32,13 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
           <div>
             <p data-reveal className="mb-5 max-w-xl text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">
-              Web studio for home-services businesses
+              Edmonton web studio for home-services businesses
             </p>
             <h1 data-reveal="1" className="max-w-4xl text-5xl font-semibold leading-[0.98] tracking-tight text-[#18231d] sm:text-6xl lg:text-7xl">
-              Websites that turn searches into phone calls.
+              Edmonton websites that turn searches into phone calls.
             </h1>
             <p data-reveal="2" className="mt-7 max-w-2xl text-lg leading-8 text-[#536156]">
-              Booyaa builds websites and lead-capture tools for restoration companies, contractors, and local service businesses. Built to rank in local search, designed for the customer who needs you right now.
+              Booyaa is an Edmonton web design and development studio building websites and lead-capture tools for restoration companies, contractors, and local service businesses. Built to rank in local search, designed for the customer who needs you right now.
             </p>
             <div data-reveal="3" className="mt-10 flex flex-col gap-3 sm:flex-row">
               <ContactModal topic="15-minute intro call" source="Homepage hero">

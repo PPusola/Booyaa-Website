@@ -7,6 +7,7 @@ const routes = [
   "/about",
   "/features",
   "/products",
+  "/web-development-edmonton",
   "/quote",
   "/safe-home-restoration",
   "/caroline-does-numbers",

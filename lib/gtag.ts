@@ -1,7 +1,9 @@
 /**
  * Conversion + event reporting for GA4 and Google Ads. Every function is a
  * no-op until gtag.js has loaded (see components/Analytics.tsx) and the
- * relevant env vars are set, so it is always safe to call.
+ * relevant env vars are set, so it is always safe to call. Meta reporting is
+ * delegated to lib/fbq.ts and fired from the same reportLeadConversion call
+ * site, so the session dedup below covers Meta too.
  *
  *   NEXT_PUBLIC_GOOGLE_ADS_ID                 e.g. AW-XXXXXXXXXX
  *   NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL   the conversion action label
@@ -10,6 +12,8 @@
  * `AW-XXXXXXXXXX/AbC-D_efGh`. Both come from the conversion action you create
  * in the Google Ads UI.
  */
+import { sendMetaLead } from "./fbq";
+
 const ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
 const CONVERSION_LABEL = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL;
 
@@ -77,10 +81,11 @@ function markReported(context: string) {
 }
 
 /**
- * Fire a lead conversion. Records a GA4 `generate_lead` event and, when the
- * Google Ads env vars are present, a Google Ads conversion. `context`
- * distinguishes where the lead came from (e.g. "quote", "contact"). Each
- * context is counted at most once per browser session.
+ * Fire a lead conversion. Records a GA4 `generate_lead` event, a Google Ads
+ * conversion when those env vars are present, and a Meta Lead event when
+ * NEXT_PUBLIC_META_PIXEL_ID is set. `context` distinguishes where the lead
+ * came from (e.g. "quote", "contact"). Each context is counted at most once
+ * per browser session, across all three destinations.
  */
 export function reportLeadConversion(context: string) {
   const send = gtag();
@@ -98,6 +103,8 @@ export function reportLeadConversion(context: string) {
       send_to: `${ADS_ID}/${CONVERSION_LABEL}`,
     });
   }
+
+  sendMetaLead(context, `${context}-${Date.now()}`);
 
   markReported(context);
 }
