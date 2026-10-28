@@ -9,6 +9,9 @@ const nextConfig = {
     return [
       { source: "/index.htm", destination: "/", permanent: true },
       { source: "/index.html", destination: "/", permanent: true },
+      // Routes renamed so the URL matches the nav label.
+      { source: "/features", destination: "/services", permanent: true },
+      { source: "/products", destination: "/work", permanent: true },
     ];
   },
 };

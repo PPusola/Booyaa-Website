@@ -1,12 +1,14 @@
 import type { MetadataRoute } from "next";
+import { services } from "@/lib/services";
 
 const siteUrl = "https://booyaa.net";
 
 const routes = [
   "",
   "/about",
-  "/features",
-  "/products",
+  "/services",
+  ...services.map((service) => `/services/${service.slug}`),
+  "/work",
   "/web-development-edmonton",
   "/quote",
   "/safe-home-restoration",

@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { ContactModal } from "@/components/ContactModal";
 import { PageShell } from "@/components/SiteChrome";
 import { BrowserFrame } from "@/components/BrowserFrame";
+import { services } from "@/lib/services";
+import { clientWork } from "@/lib/work";
+import { CONTACT_EMAIL, CONTACT_MAILTO, HEADLINE_RESULT, QUOTE_CTA, STARTING_PRICE, TESTIMONIALS } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Edmonton Web Design & Development for Local Businesses",
@@ -12,173 +15,206 @@ export const metadata: Metadata = {
   },
 };
 
-const clientWork = [
-  {
-    name: "Caroline Does Numbers",
-    type: "Client website",
-    status: "Live",
-    href: "/caroline-does-numbers",
-    text: "A trust-first service website for a bookkeeping and tax business, built to explain the offer fast and make contact easy. Readable sections, direct calls to action, and a contact path that turns visitors into booked clients.",
-    highlights: ["Service-focused page structure", "Trust-first copy flow", "Clear contact path"],
-    image: "/screenshots/caroline.png",
-    url: "carolinedoesnumbers.com",
-  },
+const facts = [
+  ["Based in", "Edmonton, Alberta"],
+  ["Reply time", "Within one business day"],
+  ["Typical build", "2 to 4 weeks"],
+  ["You work with", "The person who builds it"],
 ];
+
+const steps = [
+  ["Tell me about your business", "Send a short message or an email. What you do, who your customers are, and what your current site is or isn't doing."],
+  ["Get a scope and a price", "A clear plan for the pages, features, and timeline, with a fixed price. No obligation."],
+  ["Launch and start getting calls", "Built to rank in local search and make calling easy. I keep it running after launch."],
+];
+
+const serif = { fontFamily: "var(--font-display), Georgia, serif" };
+const eyebrow = "text-sm font-semibold text-[#7b3f2f]";
+const textLink =
+  "font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4 transition hover:text-[#7b3f2f]";
 
 export default function Home() {
   return (
     <PageShell>
-      <section className="border-b border-[#d9d0c2] px-5 py-20 sm:px-8 md:py-28">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+      <section className="px-5 pb-12 pt-10 sm:px-8 md:pb-16 md:pt-16">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center">
           <div>
-            <p data-reveal className="mb-5 max-w-xl text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">
-              Edmonton web studio for home-services businesses
+            <p data-reveal className={eyebrow}>
+              Booyaa &middot; Edmonton web studio
             </p>
-            <h1 data-reveal="1" className="max-w-4xl text-5xl font-semibold leading-[0.98] tracking-tight text-[#18231d] sm:text-6xl lg:text-7xl">
-              Edmonton websites that turn searches into phone calls.
+            <h1 data-reveal="1" className="mt-4 max-w-2xl text-5xl font-semibold leading-[1.02] text-[#18231d] sm:text-6xl lg:text-[4.25rem]">
+              Websites that turn local searches into phone calls.
             </h1>
-            <p data-reveal="2" className="mt-7 max-w-2xl text-lg leading-8 text-[#536156]">
-              Booyaa is an Edmonton web design and development studio building websites and lead-capture tools for restoration companies, contractors, and local service businesses. Built to rank in local search, designed for the customer who needs you right now.
+            <p data-reveal="2" className="mt-6 max-w-xl text-lg leading-8 text-[#536156]">
+              I build websites for restoration companies, contractors, and local service businesses. Built to show up when someone nearby searches, and to make calling you the obvious next step.
             </p>
-            <div data-reveal="3" className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <ContactModal topic="15-minute intro call" source="Homepage hero">
-                Book a 15-minute call
-              </ContactModal>
+            <div data-reveal="3" className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <ContactModal source="Homepage hero">{QUOTE_CTA}</ContactModal>
               <a
                 href="#work"
-                className="inline-flex items-center justify-center border border-[#b8ad9d] px-5 py-2.5 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
+                className="inline-flex items-center justify-center rounded-md border border-[#c4b8a6] px-6 py-3 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
               >
-                See client results
+                See client work
               </a>
             </div>
+            <p data-reveal="4" className="mt-5 text-sm text-[#536156]">
+              Or email <a href={CONTACT_MAILTO} className={textLink}>{CONTACT_EMAIL}</a>
+            </p>
           </div>
 
-          <div data-reveal="4" className="border border-[#cfc5b6] bg-[#fffaf2] p-5 shadow-[18px_18px_0_#ded4c6]">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">How Booyaa works</p>
-            <div className="mt-6 grid gap-4">
-              {["Understand your customers and how they search", "Build a site that converts them into calls", "Keep it ranking and working for you"].map((item, index) => (
-                <div key={item} className="grid grid-cols-[3rem_1fr] border border-[#d9d0c2] bg-[#fdf8ef]">
-                  <span className="border-r border-[#d9d0c2] py-4 text-center text-sm font-semibold text-[#7b3f2f]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="px-5 py-4 text-sm font-semibold text-[#1f2a24]">{item}</span>
-                </div>
-              ))}
+          <a data-reveal="3" href="/safe-home-restoration" className="group block">
+            <BrowserFrame
+              src="/screenshots/safe-home.png"
+              url="safehomerestoration.ca"
+              alt="Safe Home Solution and Restoration website homepage"
+            />
+            <p className="mt-3 text-sm text-[#536156]">
+              Recent work: <span className="font-semibold text-[#18231d] group-hover:text-[#7b3f2f]">Safe Home Restoration</span>, live in Edmonton.
+            </p>
+          </a>
+        </div>
+      </section>
+
+      <section className="border-y border-[#ddd4c5]">
+        {/* gap-px over a rule-colored background draws the dividers between
+            cells at every breakpoint without per-cell border bookkeeping. */}
+        <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-[#ddd4c5] lg:grid-cols-4">
+          {facts.map(([label, value]) => (
+            <div key={label} className="bg-[#f6f1e8] px-5 py-5 sm:px-8">
+              <dt className="text-xs text-[#7b857b]">{label}</dt>
+              <dd className="mt-1 font-semibold text-[#18231d]">{value}</dd>
             </div>
+          ))}
+        </dl>
+      </section>
+
+      {(TESTIMONIALS.length > 0 || HEADLINE_RESULT) && (
+        <section className="px-5 pt-16 sm:px-8">
+          <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-2">
+            {HEADLINE_RESULT && (
+              <div data-reveal className="border-l-2 border-[#7b3f2f] pl-6">
+                <p className="text-5xl font-semibold text-[#18231d]" style={serif}>{HEADLINE_RESULT.value}</p>
+                <p className="mt-2 text-lg text-[#18231d]">{HEADLINE_RESULT.label}</p>
+                <p className="mt-3 text-sm text-[#536156]">{HEADLINE_RESULT.client}</p>
+              </div>
+            )}
+            {TESTIMONIALS.map((item, index) => (
+              <figure data-reveal={String(index + 1)} key={item.name} className="border-l-2 border-[#7b3f2f] pl-6">
+                <blockquote className="text-xl leading-8 text-[#18231d]" style={serif}>&ldquo;{item.quote}&rdquo;</blockquote>
+                <figcaption className="mt-4 text-sm text-[#536156]">
+                  <span className="font-semibold text-[#18231d]">{item.name}</span>, {item.business}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section className="px-5 py-16 sm:px-8 md:py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <div data-reveal>
+            <p className={eyebrow}>What I build</p>
+            <h2 className="mt-3 text-4xl font-semibold leading-tight text-[#18231d] sm:text-5xl">Everything a local business website needs to bring in work.</h2>
+            <a href="/services" className={`mt-6 inline-block text-sm ${textLink}`}>
+              All services &rarr;
+            </a>
+          </div>
+          <ol data-reveal="1" className="border-t border-[#1f2a24]">
+            {services.map((service, index) => (
+              <li key={service.slug} className="border-b border-[#ddd4c5]">
+                <a
+                  href={`/services/${service.slug}`}
+                  className="group grid grid-cols-[2.5rem_1fr] gap-x-4 py-5 transition-colors hover:bg-[#fffaf2] sm:grid-cols-[3rem_1fr_auto]"
+                >
+                  <span className="pt-1 text-sm font-semibold text-[#7b3f2f]">{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3 className="text-xl font-semibold text-[#18231d] transition group-hover:text-[#7b3f2f]">{service.title}</h3>
+                    <p className="mt-1 leading-7 text-[#536156]">{service.summary}</p>
+                  </div>
+                  <p className="col-start-2 mt-2 text-sm text-[#7b857b] sm:col-start-3 sm:mt-1.5 sm:text-right">
+                    {service.timeline.replace("Typical build: ", "")}
+                    <span aria-hidden="true" className="ml-2 inline-block text-[#1f2a24] transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                  </p>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="border-y border-[#ddd4c5] bg-[#fffaf2] px-5 py-16 sm:px-8">
+        <div className="mx-auto max-w-7xl">
+          <p data-reveal className={eyebrow}>How it works</p>
+          <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-10">
+            {steps.map(([title, text], index) => (
+              <div data-reveal={String(index + 1)} key={title} className="border-t border-[#1f2a24] pt-5">
+                <p className="text-3xl font-semibold text-[#7b3f2f]" style={serif}>{index + 1}.</p>
+                <h3 className="mt-3 text-xl font-semibold text-[#18231d]">{title}</h3>
+                <p className="mt-2 leading-7 text-[#536156]">{text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="work" className="px-5 py-20 sm:px-8">
+      <section id="work" className="px-5 py-16 sm:px-8 md:py-20">
         <div className="mx-auto max-w-7xl">
-          <div data-reveal className="mb-10 max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Client work</p>
-            <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d] sm:text-5xl">Built for businesses whose customers can&apos;t wait.</h2>
+          <div data-reveal className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-2xl">
+              <p className={eyebrow}>Client work</p>
+              <h2 className="mt-3 text-4xl font-semibold leading-tight text-[#18231d] sm:text-5xl">Built for businesses whose customers can&apos;t wait.</h2>
+            </div>
+            <a href="/work" className={`text-sm ${textLink}`}>All work &rarr;</a>
           </div>
 
-          <a
-            data-reveal="1"
-            href="/safe-home-restoration"
-            className="group block border border-[#1f2a24] bg-[#fffaf2] shadow-[6px_6px_0_#ded4c6] transition-all duration-300 hover:-translate-y-1 hover:shadow-[14px_14px_0_#ded4c6]"
-          >
-            <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-2 lg:items-center">
-              <div>
-                <div className="flex flex-wrap items-center gap-3">
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Featured case study</p>
-                  <span className="border border-[#d8cec0] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#536156]">
-                    Live in production
-                  </span>
-                </div>
-                <h3 className="mt-4 text-3xl font-semibold tracking-tight text-[#18231d] sm:text-4xl">
-                  Safe Home Solution &amp; Restoration
-                </h3>
-                <p className="mt-4 max-w-2xl leading-7 text-[#536156]">
-                  A full production website for Edmonton&apos;s 24/7 emergency restoration company: six service pages built for local search, a persistent emergency call flow, and estimate forms that log every lead automatically. Designed for the customer standing in a flooded basement at 2 AM.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {["24/7 click-to-call emergency flow", "Local SEO service and area pages", "Automatic lead capture and logging"].map((item) => (
-                    <span key={item} className="border border-[#d9d0c2] bg-[#fdf8ef] px-3 py-1.5 text-xs font-semibold text-[#18231d]">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <p className="mt-6 text-sm font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4">
-                  Read the case study
-                  <span aria-hidden="true" className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1.5">&rarr;</span>
-                </p>
-              </div>
-              <BrowserFrame
-                src="/screenshots/safe-home.png"
-                url="safehomerestoration.ca"
-                alt="Safe Home Solution and Restoration website homepage"
-              />
-            </div>
-          </a>
-
-          <div className="mt-5 grid gap-5">
-            {clientWork.map((project) => (
+          <div className="grid gap-12">
+            {clientWork.map((project, index) => (
               <a
-                data-reveal="2"
+                data-reveal={String(index + 1)}
                 key={project.name}
                 href={project.href}
-                className="group block border border-[#1f2a24] bg-[#fffaf2] shadow-[6px_6px_0_#ded4c6] transition-all duration-300 hover:-translate-y-1 hover:shadow-[14px_14px_0_#ded4c6]"
+                className="group grid gap-8 border-t border-[#1f2a24] pt-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start"
               >
-                <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-2 lg:items-center">
-                  <div>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">{project.type}</p>
-                      <span className="border border-[#d8cec0] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#536156]">
-                        {project.status}
-                      </span>
-                    </div>
-                    <h3 className="mt-4 text-3xl font-semibold tracking-tight text-[#18231d] sm:text-4xl">{project.name}</h3>
-                    <p className="mt-4 max-w-2xl leading-7 text-[#536156]">{project.text}</p>
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {project.highlights.map((item) => (
-                        <span key={item} className="border border-[#d9d0c2] bg-[#fdf8ef] px-3 py-1.5 text-xs font-semibold text-[#18231d]">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                    <p className="mt-6 text-sm font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4">
-                      Read the case study
-                      <span aria-hidden="true" className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1.5">&rarr;</span>
-                    </p>
-                  </div>
-                  <BrowserFrame src={project.image} url={project.url} alt={`${project.name} website homepage`} />
+                <div>
+                  <p className="text-sm text-[#7b857b]">{project.type}</p>
+                  <h3 className="mt-2 text-3xl font-semibold text-[#18231d] transition group-hover:text-[#7b3f2f]">{project.name}</h3>
+                  <p className="mt-4 leading-7 text-[#536156]">{project.text}</p>
+                  <ul className="mt-5 grid gap-1.5 text-sm text-[#18231d]">
+                    {project.highlights.map((item) => (
+                      <li key={item} className="flex gap-2">
+                        <span aria-hidden="true" className="text-[#7b3f2f]">&ndash;</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-6 text-sm font-semibold text-[#1f2a24]">
+                    Read the case study
+                    <span aria-hidden="true" className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1.5">&rarr;</span>
+                  </p>
                 </div>
+                <BrowserFrame src={project.image} url={project.url} alt={`${project.name} website homepage`} />
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-y border-[#d9d0c2] bg-[#fffaf2] px-5 py-20 sm:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div data-reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Pricing</p>
-              <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d] sm:text-5xl">Every project is scoped individually.</h2>
-              <p className="mt-5 text-lg leading-8 text-[#536156]">
-                A restoration company, a contractor, and a bookkeeper need different things from their website. A 15-minute call is enough to understand your business and give you a clear scope and price, with no obligation.
-              </p>
-            </div>
-            <ContactModal topic="15-minute intro call" source="Homepage pricing section">
-              Book a 15-minute call
-            </ContactModal>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#1f2a24] px-5 py-16 text-[#f6f1e8] sm:px-8">
+      <section className="bg-[#1f2a24] px-5 py-14 text-[#f6f1e8] sm:px-8">
         <div data-reveal className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d6a26f]">Your next customer is searching right now</p>
-            <h2 className="mt-3 max-w-2xl text-4xl font-semibold tracking-tight">Is your website winning that call, or losing it to a competitor?</h2>
+          <div className="max-w-2xl">
+            <h2 className="text-4xl font-semibold leading-tight">
+              {STARTING_PRICE ? `Websites from ${STARTING_PRICE}.` : "Get a clear price for your website."}
+            </h2>
+            <p className="mt-3 text-lg leading-8 text-[#f6f1e8]/75">
+              Tell me about your business and I&apos;ll reply within one business day with a scope and price.
+            </p>
           </div>
-          <ContactModal topic="15-minute intro call" source="Homepage closing CTA" variant="light">
-            Book a 15-minute call
-          </ContactModal>
+          <div className="flex flex-col items-start gap-3">
+            <ContactModal source="Homepage closing CTA" variant="light">{QUOTE_CTA}</ContactModal>
+            <a href={CONTACT_MAILTO} className="text-sm font-medium text-[#f6f1e8]/80 underline decoration-[#f6f1e8]/30 underline-offset-4 hover:text-[#f6f1e8]">
+              {CONTACT_EMAIL}
+            </a>
+          </div>
         </div>
       </section>
     </PageShell>

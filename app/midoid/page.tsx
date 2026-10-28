@@ -88,7 +88,7 @@ export default function MiDoidPage() {
       {/* Hero */}
       <section className="px-5 py-20 sm:px-8 md:py-28">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Available now for Mac and Android</p>
+          <p className="text-sm font-semibold text-[#7b3f2f]">Available now for Mac and Android</p>
           <h1 className="mt-4 text-5xl font-semibold leading-tight tracking-tight text-[#18231d] sm:text-6xl">
             Move files between Android and Mac.<br className="hidden sm:block" /> Private. Local. No cloud.
           </h1>
@@ -100,7 +100,7 @@ export default function MiDoidPage() {
               href="https://github.com/PPusola/MiDoid/releases"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 border border-[#1f2a24] bg-[#1f2a24] px-6 py-3 text-sm font-semibold text-[#f6f1e8] transition hover:border-[#7b3f2f] hover:bg-[#7b3f2f]"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-[#1f2a24] bg-[#1f2a24] px-6 py-3 text-sm font-semibold text-[#f6f1e8] transition hover:border-[#7b3f2f] hover:bg-[#7b3f2f]"
             >
               <svg aria-hidden="true" className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4M15 3h6m0 0v6m0-6L10 14" />
@@ -111,7 +111,7 @@ export default function MiDoidPage() {
               href="https://github.com/PPusola/MiDoid/releases"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 border border-[#b8ad9d] px-6 py-3 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-[#c4b8a6] px-6 py-3 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
             >
               <svg aria-hidden="true" className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
@@ -126,11 +126,11 @@ export default function MiDoidPage() {
       {/* 3-Step Setup */}
       <section className="px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Get started in minutes</p>
+          <p className="text-sm font-semibold text-[#7b3f2f]">Get started in minutes</p>
           <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d]">Three steps to your first transfer.</h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
             {steps.map((step) => (
-              <div key={step.number} className="border border-[#d9d0c2] bg-[#fffaf2] p-6">
+              <div key={step.number} className="rounded-md border border-[#ddd4c5] bg-[#fffaf2] p-6">
                 <span className="text-4xl font-semibold text-[#d9d0c2]">{step.number}</span>
                 <h3 className="mt-4 font-semibold text-[#18231d]">{step.title}</h3>
                 <p className="mt-2 text-sm leading-7 text-[#536156]">{step.body}</p>
@@ -141,13 +141,13 @@ export default function MiDoidPage() {
       </section>
 
       {/* Why MiDoid */}
-      <section className="border-y border-[#d9d0c2] bg-[#fffaf2] px-5 py-20 sm:px-8">
+      <section className="border-y border-[#ddd4c5] bg-[#fffaf2] px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Why MiDoid</p>
+          <p className="text-sm font-semibold text-[#7b3f2f]">Why MiDoid</p>
           <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d]">Built for people who use Android with a Mac.</h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {whyItems.map((item) => (
-              <div key={item.title} className="border border-[#d9d0c2] bg-[#fdf8ef] p-6">
+              <div key={item.title} className="rounded-md border border-[#ddd4c5] bg-[#f6f1e8] p-6">
                 <h3 className="font-semibold text-[#18231d]">{item.title}</h3>
                 <p className="mt-2 text-sm leading-7 text-[#536156]">{item.body}</p>
               </div>
@@ -159,21 +159,21 @@ export default function MiDoidPage() {
       {/* Compatibility */}
       <section className="px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Requirements</p>
+          <p className="text-sm font-semibold text-[#7b3f2f]">Requirements</p>
           <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d]">Compatibility.</h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
-            <div className="border border-[#d9d0c2] bg-[#fffaf2] p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Mac</p>
+            <div className="rounded-md border border-[#ddd4c5] bg-[#fffaf2] p-6">
+              <p className="text-xs font-semibold text-[#7b3f2f]">Mac</p>
               <p className="mt-3 font-semibold text-[#18231d]">macOS 13 Ventura or later</p>
               <p className="mt-2 text-sm leading-6 text-[#536156]">Runs as a lightweight menu bar app. Apple Silicon and Intel both supported.</p>
             </div>
-            <div className="border border-[#d9d0c2] bg-[#fffaf2] p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Android</p>
+            <div className="rounded-md border border-[#ddd4c5] bg-[#fffaf2] p-6">
+              <p className="text-xs font-semibold text-[#7b3f2f]">Android</p>
               <p className="mt-3 font-semibold text-[#18231d]">Android 8.0 or later</p>
               <p className="mt-2 text-sm leading-6 text-[#536156]">Distributed as a sideloaded APK. Enable &ldquo;Install from unknown sources&rdquo; in your Android settings to install.</p>
             </div>
-            <div className="border border-[#d9d0c2] bg-[#fffaf2] p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Network</p>
+            <div className="rounded-md border border-[#ddd4c5] bg-[#fffaf2] p-6">
+              <p className="text-xs font-semibold text-[#7b3f2f]">Network</p>
               <p className="mt-3 font-semibold text-[#18231d]">Same Wi-Fi network required</p>
               <p className="mt-2 text-sm leading-6 text-[#536156]">Both devices must be on the same local network. Mobile data or VPN connections are not supported.</p>
             </div>
@@ -182,13 +182,13 @@ export default function MiDoidPage() {
       </section>
 
       {/* FAQ */}
-      <section className="border-y border-[#d9d0c2] bg-[#fffaf2] px-5 py-20 sm:px-8">
+      <section className="border-y border-[#ddd4c5] bg-[#fffaf2] px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">FAQ</p>
+          <p className="text-sm font-semibold text-[#7b3f2f]">FAQ</p>
           <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d]">Common questions.</h2>
-          <div className="mt-10 grid gap-0 divide-y divide-[#d9d0c2] border border-[#d9d0c2]">
+          <div className="mt-10 grid gap-0 divide-y divide-[#ddd4c5] overflow-hidden rounded-md border border-[#ddd4c5]">
             {faqItems.map((item) => (
-              <div key={item.question} className="bg-[#fdf8ef] px-6 py-6">
+              <div key={item.question} className="bg-[#f6f1e8] px-6 py-6">
                 <h3 className="font-semibold text-[#18231d]">{item.question}</h3>
                 <p className="mt-2 text-sm leading-7 text-[#536156]">{item.answer}</p>
               </div>
@@ -200,11 +200,11 @@ export default function MiDoidPage() {
       {/* Changelog */}
       <section className="px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Release notes</p>
+          <p className="text-sm font-semibold text-[#7b3f2f]">Release notes</p>
           <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d]">What is new.</h2>
           <div className="mt-10 space-y-8">
             {changelogEntries.map((entry) => (
-              <div key={entry.version} className="border border-[#d9d0c2] bg-[#fffaf2] p-6">
+              <div key={entry.version} className="rounded-md border border-[#ddd4c5] bg-[#fffaf2] p-6">
                 <div className="flex items-baseline gap-4">
                   <span className="text-xl font-semibold text-[#18231d]">{entry.version}</span>
                   <span className="text-sm text-[#536156]">{entry.date}</span>
@@ -224,9 +224,9 @@ export default function MiDoidPage() {
       </section>
 
       {/* Booyaa Labs payoff */}
-      <section className="border-y border-[#d9d0c2] bg-[#1f2a24] px-5 py-20 text-[#f6f1e8] sm:px-8">
+      <section className="border-y border-[#ddd4c5] bg-[#1f2a24] px-5 py-20 text-[#f6f1e8] sm:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d6a26f]">Part of Booyaa Labs</p>
+          <p className="text-sm font-semibold text-[#d6a26f]">Part of Booyaa Labs</p>
           <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
             A proving ground for the tech behind client work.
           </h2>
@@ -235,25 +235,25 @@ export default function MiDoidPage() {
           </p>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {labsPayoffs.map((item) => (
-              <article key={item.title} className="border border-[#3a463d] bg-[#243029] p-6">
+              <article key={item.title} className="rounded-md border border-[#3a463d] bg-[#243029] p-6">
                 <h3 className="text-xl font-semibold tracking-tight">{item.title}</h3>
                 <p className="mt-4 leading-7 text-[#c8d0c6]">{item.body}</p>
               </article>
             ))}
           </div>
           <div className="mt-12">
-            <ContactModal topic="15-minute intro call" source="MiDoid Labs section" variant="light">
-              Book a 15-minute call
+            <ContactModal source="MiDoid Labs section" variant="light">
+              Get a free quote
             </ContactModal>
           </div>
         </div>
       </section>
 
       {/* Support + Legal */}
-      <section className="border-t border-[#d9d0c2] bg-[#fffaf2] px-5 py-16 sm:px-8">
+      <section className="border-t border-[#ddd4c5] bg-[#fffaf2] px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-7xl grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Support</p>
+            <p className="text-xs font-semibold text-[#7b3f2f]">Support</p>
             <p className="mt-4 text-sm leading-7 text-[#536156]">Questions, bug reports, or setup help? Reach out directly.</p>
             <ContactModal topic="MiDoid support" source="MiDoid page" variant="secondary" mode="contact">
               Contact Support
@@ -266,7 +266,7 @@ export default function MiDoidPage() {
             </p>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Legal</p>
+            <p className="text-xs font-semibold text-[#7b3f2f]">Legal</p>
             <div className="mt-4 space-y-2 text-sm">
               <p>
                 <a href="/privacy" className="font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4 hover:text-[#7b3f2f]">Privacy Policy</a>
@@ -277,7 +277,7 @@ export default function MiDoidPage() {
             </div>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Source</p>
+            <p className="text-xs font-semibold text-[#7b3f2f]">Source</p>
             <p className="mt-4 text-sm leading-7 text-[#536156]">
               Releases are hosted on GitHub. You can review the release history and download previous versions at any time.
             </p>

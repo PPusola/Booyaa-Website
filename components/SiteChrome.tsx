@@ -4,14 +4,83 @@ import { useEffect, useState, type ReactNode } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ContactModal } from "./ContactModal";
+import { CONTACT_EMAIL, CONTACT_MAILTO, QUOTE_CTA } from "@/lib/site";
+import { services } from "@/lib/services";
+import { clientWork } from "@/lib/work";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/products", label: "Work" },
-  { href: "/features", label: "Services" },
+type NavChild = { href: string; label: string; summary: string };
+type NavLink = { href: string; label: string; allLabel?: string; children?: NavChild[] };
+
+const navLinks: NavLink[] = [
+  {
+    href: "/work",
+    label: "Work",
+    allLabel: "All work and side projects",
+    children: clientWork.map((project) => ({ href: project.href, label: project.name, summary: project.summary })),
+  },
+  {
+    href: "/services",
+    label: "Services",
+    allLabel: "All services",
+    children: services.map((service) => ({ href: `/services/${service.slug}`, label: service.title, summary: service.summary })),
+  },
   { href: "/about", label: "About" },
-  { href: "/download", label: "Downloads" },
+  { href: "/quote", label: "Contact" },
 ];
+
+const desktopLinkClass = (active: boolean) =>
+  `inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium underline-offset-[6px] transition ${
+    active ? "text-[#18231d] underline decoration-[#7b3f2f] decoration-2" : "text-[#536156] hover:text-[#18231d]"
+  }`;
+
+/**
+ * Desktop dropdown for a nav item with sub-pages. It opens on hover and on
+ * keyboard focus, so tabbing into the parent link reveals the sub-links, and
+ * closes on Escape or when focus leaves. The parent stays a real link to the
+ * overview page.
+ */
+function NavDropdown({ link, active }: { link: NavLink; active: boolean }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setOpen(false);
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") setOpen(false);
+      }}
+    >
+      <a href={link.href} aria-haspopup="true" aria-expanded={open} aria-current={active ? "page" : undefined} className={desktopLinkClass(active)}>
+        {link.label}
+        <svg aria-hidden="true" viewBox="0 0 12 12" className={`h-3 w-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth={1.6}>
+          <path d="M2.5 4.5 6 8l3.5-3.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </a>
+      <div
+        className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 transition-all duration-200 ${
+          open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
+        }`}
+      >
+        <div className="w-[22rem] rounded-md border border-[#ddd4c5] bg-[#fffaf2] p-2 shadow-[0_18px_40px_-20px_rgba(31,42,36,0.35)]">
+          {link.children?.map((child) => (
+            <a key={child.href} href={child.href} className="group block rounded px-4 py-3 transition-colors hover:bg-[#f6f1e8]">
+              <span className="block text-sm font-semibold text-[#18231d] group-hover:text-[#7b3f2f]">{child.label}</span>
+              <span className="mt-0.5 block text-xs leading-5 text-[#536156]">{child.summary}</span>
+            </a>
+          ))}
+          <a href={link.href} className="mt-1 block border-t border-[#ddd4c5] px-4 pb-2 pt-3 text-sm font-semibold text-[#1f2a24] hover:text-[#7b3f2f]">
+            {link.allLabel} &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const displayFont = { fontFamily: "var(--font-display), Georgia, serif" };
 
@@ -83,7 +152,7 @@ export function SiteHeader() {
       <header
         className={`sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-300 ${
           scrolled
-            ? "border-[#d9d0c2] bg-[#f6f1e8]/90 shadow-[0_1px_20px_rgba(31,42,36,0.08)] backdrop-blur-md"
+            ? "border-[#ddd4c5] bg-[#f6f1e8]/90 backdrop-blur-md"
             : "border-transparent bg-[#f6f1e8]/80 backdrop-blur-sm"
         }`}
       >
@@ -96,22 +165,42 @@ export function SiteHeader() {
             <BrandLogo markClassName="w-14 sm:w-[4.5rem]" nameClassName="text-xl sm:text-2xl" />
           </a>
 
-          <div className="ml-auto flex items-center gap-2">
+          <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
+            {navLinks.map((link) =>
+              link.children ? (
+                <NavDropdown key={link.href} link={link} active={isActive(link.href)} />
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive(link.href) ? "page" : undefined}
+                  className={desktopLinkClass(isActive(link.href))}
+                >
+                  {link.label}
+                </a>
+              ),
+            )}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <a
+              href={CONTACT_MAILTO}
+              className="hidden px-3 text-sm font-medium text-[#536156] transition hover:text-[#18231d] lg:inline"
+            >
+              {CONTACT_EMAIL}
+            </a>
             <div className="hidden sm:block">
-              <ContactModal topic="15-minute intro call" source="Header CTA">
-                Book a Call
-              </ContactModal>
+              <ContactModal source="Header CTA">{QUOTE_CTA}</ContactModal>
             </div>
 
-            {/* Menu trigger (all screen sizes, RDM-style) */}
+            {/* Menu trigger (mobile only; desktop shows the inline nav) */}
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
               aria-expanded={menuOpen}
               aria-label="Open menu"
-              className="group inline-flex items-center gap-2 border border-[#b8ad9d] px-4 py-2.5 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24] hover:bg-[#fffaf2]"
+              className="group inline-flex h-11 w-11 items-center justify-center rounded-md border border-[#d6ccbc] bg-[#fffaf2] text-[#1f2a24] transition hover:border-[#1f2a24] md:hidden"
             >
-              <span className="hidden sm:inline">Menu</span>
               <span className="relative block h-3.5 w-5">
                 <span className="absolute left-0 top-0 block h-0.5 w-5 bg-current transition-transform duration-300 group-hover:translate-x-0.5" />
                 <span className="absolute left-0 top-1/2 block h-0.5 w-5 -translate-y-1/2 bg-current" />
@@ -139,12 +228,12 @@ export function SiteHeader() {
         <div className="absolute inset-0 bg-[#f6f1e8]" />
         <div
           aria-hidden="true"
-          className="absolute right-[-15%] top-[-10%] h-[70%] w-[70%] rounded-full opacity-[0.14] blur-3xl"
+          className="absolute right-[-15%] top-[-10%] h-[70%] w-[70%] rounded-md opacity-[0.14] blur-3xl"
           style={{ background: "radial-gradient(circle, #c1682b, transparent 70%)" }}
         />
         <div
           aria-hidden="true"
-          className="absolute bottom-[-15%] left-[-10%] h-[55%] w-[55%] rounded-full opacity-[0.10] blur-3xl"
+          className="absolute bottom-[-15%] left-[-10%] h-[55%] w-[55%] rounded-md opacity-[0.10] blur-3xl"
           style={{ background: "radial-gradient(circle, #221c16, transparent 70%)" }}
         />
         {/* Ginger arcs, anchored top-right */}
@@ -186,7 +275,7 @@ export function SiteHeader() {
               type="button"
               onClick={() => setMenuOpen(false)}
               aria-label="Close menu"
-              className="inline-flex h-11 w-11 items-center justify-center border border-[#b8ad9d] text-[#7b3f2f] transition hover:border-[#7b3f2f] hover:bg-[#fffaf2]"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-[#d6ccbc] bg-[#fffaf2] text-[#1f2a24] transition hover:border-[#1f2a24]"
             >
               <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6 6 18" />
@@ -195,8 +284,8 @@ export function SiteHeader() {
           </div>
 
           {/* Links */}
-          <nav className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-5 md:px-8">
-            <ul className="flex flex-col gap-1 sm:gap-2">
+          <nav className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center overflow-y-auto px-5 py-6 md:px-8">
+            <ul className="flex flex-col gap-3">
               {navLinks.map((link, index) => (
                 <li key={link.href}>
                   <a
@@ -207,7 +296,7 @@ export function SiteHeader() {
                       ...displayFont,
                       transitionDelay: menuOpen ? `${index * 55 + 120}ms` : "0ms",
                     }}
-                    className={`inline-block text-5xl font-semibold leading-tight tracking-tight transition-all duration-500 sm:text-6xl lg:text-7xl ${
+                    className={`inline-block text-4xl font-semibold leading-tight tracking-tight transition-all duration-500 sm:text-5xl ${
                       menuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
                     } ${
                       isActive(link.href)
@@ -217,6 +306,18 @@ export function SiteHeader() {
                   >
                     {link.label}
                   </a>
+                  {link.children && (
+                    <div
+                      style={{ transitionDelay: menuOpen ? `${index * 55 + 160}ms` : "0ms" }}
+                      className={`mt-1 flex flex-col gap-1.5 transition-all duration-500 ${menuOpen ? "opacity-100" : "opacity-0"}`}
+                    >
+                      {link.children.map((child) => (
+                        <a key={child.href} href={child.href} onClick={() => setMenuOpen(false)} className="text-base text-[#536156] hover:text-[#7b3f2f]">
+                          {child.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
@@ -228,21 +329,10 @@ export function SiteHeader() {
               }`}
             >
               <div onClick={() => setMenuOpen(false)}>
-                <ContactModal topic="15-minute intro call" source="Overlay menu CTA">
-                  Book a Call
-                </ContactModal>
+                <ContactModal source="Overlay menu CTA">{QUOTE_CTA}</ContactModal>
               </div>
-              <a
-                href="https://github.com/PPusola"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-[42px] w-[42px] items-center justify-center border border-[#b8ad9d] text-[#1f2a24] transition hover:border-[#1f2a24] hover:bg-[#fffaf2]"
-                aria-label="GitHub"
-                title="GitHub"
-              >
-                <svg aria-hidden="true" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" />
-                </svg>
+              <a href={CONTACT_MAILTO} className="text-base font-medium text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4">
+                {CONTACT_EMAIL}
               </a>
             </div>
           </nav>
@@ -253,57 +343,50 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
+  const linkClass = "transition hover:text-[#18231d]";
+
   return (
-    <footer className="border-t border-[#d9d0c2] bg-[#f6f1e8] px-5 py-12 text-[#536156] sm:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_1.4fr_1fr]">
+    <footer className="border-t border-[#ddd4c5] bg-[#fffaf2] px-5 py-14 text-[#536156] sm:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.2fr_1fr_1fr_1.3fr]">
         <div>
           <a href="/" aria-label="Booyaa home" className="inline-flex items-center transition-opacity hover:opacity-80">
             <BrandLogo />
           </a>
-          <p className="mt-3 max-w-sm text-sm leading-6">Websites and lead-capture tools for home-services and local businesses.</p>
-          <p className="mt-6 text-sm">© {new Date().getFullYear()} Booyaa.</p>
+          <p className="mt-3 max-w-xs text-sm leading-6">Websites and lead-capture tools for Edmonton home-services and local businesses.</p>
         </div>
-        <div className="grid gap-7 text-sm sm:grid-cols-3">
-          <div>
-            <p className="font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Navigate</p>
-            <div className="mt-4 grid gap-2">
-              <a href="/" className="hover:text-[#18231d]">Home</a>
-              <a href="/products" className="hover:text-[#18231d]">Work</a>
-              <a href="/features" className="hover:text-[#18231d]">Services</a>
-              <a href="/about" className="hover:text-[#18231d]">About</a>
-              <a href="/download" className="hover:text-[#18231d]">Downloads</a>
-            </div>
-          </div>
-          <div>
-            <p className="font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Projects</p>
-            <div className="mt-4 grid gap-2">
-              <a href="/safe-home-restoration" className="hover:text-[#18231d]">Safe Home Restoration</a>
-              <a href="/caroline-does-numbers" className="hover:text-[#18231d]">Caroline Does Numbers</a>
-              <a href="/otto" className="hover:text-[#18231d]">Otto</a>
-              <a href="/midoid" className="hover:text-[#18231d]">MiDoid</a>
-            </div>
-          </div>
-          <div>
-            <p className="font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Legal</p>
-            <div className="mt-4 grid gap-2">
-              <a href="/privacy" className="hover:text-[#18231d]">Privacy</a>
-              <a href="/terms" className="hover:text-[#18231d]">Terms</a>
-            </div>
+        <div className="text-sm">
+          <p className="font-semibold text-[#18231d]">Booyaa</p>
+          <div className="mt-4 grid gap-2.5">
+            {navLinks.map((link) => (
+              <a key={link.href} href={link.href} className={linkClass}>{link.label}</a>
+            ))}
           </div>
         </div>
-        <div className="border-t border-[#d9d0c2] pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-          <p className="font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">Contact</p>
-          <p className="mt-4 text-sm leading-6">Want to talk through your website? Book a free 15-minute call.</p>
+        <div className="text-sm">
+          <p className="font-semibold text-[#18231d]">Client work</p>
+          <div className="mt-4 grid gap-2.5">
+            <a href="/safe-home-restoration" className={linkClass}>Safe Home Restoration</a>
+            <a href="/caroline-does-numbers" className={linkClass}>Caroline Does Numbers</a>
+            <a href="/web-development-edmonton" className={linkClass}>Web development in Edmonton</a>
+          </div>
+        </div>
+        <div className="text-sm">
+          <p className="font-semibold text-[#18231d]">Get in touch</p>
+          <p className="mt-4 leading-6">Tell me about your business and I&apos;ll reply within one business day.</p>
+          <a href={CONTACT_MAILTO} className="mt-3 inline-block font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4 hover:text-[#7b3f2f]">
+            {CONTACT_EMAIL}
+          </a>
           <div className="mt-5">
-            <ContactModal topic="15-minute intro call" source="Footer contact" variant="secondary">
-              Book a 15-minute call
-            </ContactModal>
+            <ContactModal source="Footer contact" variant="secondary">{QUOTE_CTA}</ContactModal>
           </div>
-          <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-            <a href="https://github.com/PPusola" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4 hover:text-[#7b3f2f]">
-              GitHub
-            </a>
-          </div>
+        </div>
+      </div>
+      <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-3 border-t border-[#ddd4c5] pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} Booyaa. Edmonton, Alberta.</p>
+        <div className="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="/work#side-projects" className={linkClass}>Side projects</a>
+          <a href="/privacy" className={linkClass}>Privacy</a>
+          <a href="/terms" className={linkClass}>Terms</a>
         </div>
       </div>
     </footer>

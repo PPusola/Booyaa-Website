@@ -65,10 +65,10 @@ const areasServed = [
 export default function WebDevelopmentEdmonton() {
   return (
     <PageShell>
-      <section className="border-b border-[#d9d0c2] px-5 py-20 sm:px-8 md:py-28">
+      <section className="border-b border-[#ddd4c5] px-5 py-20 sm:px-8 md:py-28">
         <div className="mx-auto max-w-7xl">
           <div data-reveal className="max-w-3xl">
-            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">
+            <p className="mb-5 text-sm font-semibold text-[#7b3f2f]">
               Web development in Edmonton
             </p>
             <h1 className="text-5xl font-semibold leading-[1.02] tracking-tight text-[#18231d] sm:text-6xl">
@@ -78,12 +78,12 @@ export default function WebDevelopmentEdmonton() {
               Booyaa is an Edmonton web design and development studio. I build fast, local-search-ready websites and lead-capture tools for home-services and local businesses across Edmonton and Alberta. Every site is built for the customer who needs you right now, and structured to be the one they find first.
             </p>
             <div data-reveal="1" className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <ContactModal topic="15-minute intro call" source="Edmonton page hero">
-                Book a 15-minute call
+              <ContactModal source="Edmonton page hero">
+                Get a free quote
               </ContactModal>
               <a
                 href="#edmonton-work"
-                className="inline-flex items-center justify-center border border-[#b8ad9d] px-5 py-2.5 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
+                className="inline-flex items-center justify-center rounded-md border border-[#c4b8a6] px-5 py-2.5 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
               >
                 See Edmonton client work
               </a>
@@ -95,12 +95,12 @@ export default function WebDevelopmentEdmonton() {
       <section className="px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-7xl">
           <div data-reveal className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">What you get</p>
+            <p className="text-sm font-semibold text-[#7b3f2f]">What you get</p>
             <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d] sm:text-5xl">Websites Edmonton customers actually find.</h2>
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {whatYouGet.map((item, index) => (
-              <article data-reveal={String((index % 3) + 1)} key={item.title} className="border border-[#d9d0c2] bg-[#fffaf2] p-6">
+              <article data-reveal={String((index % 3) + 1)} key={item.title} className="rounded-md border border-[#ddd4c5] bg-[#fffaf2] p-6">
                 <h3 className="text-xl font-semibold tracking-tight text-[#18231d]">{item.title}</h3>
                 <p className="mt-4 leading-7 text-[#536156]">{item.text}</p>
               </article>
@@ -109,10 +109,10 @@ export default function WebDevelopmentEdmonton() {
         </div>
       </section>
 
-      <section id="edmonton-work" className="border-y border-[#d9d0c2] bg-[#fffaf2] px-5 py-20 sm:px-8">
+      <section id="edmonton-work" className="border-y border-[#ddd4c5] bg-[#fffaf2] px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-7xl">
           <div data-reveal className="mb-10 max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Local client work</p>
+            <p className="text-sm font-semibold text-[#7b3f2f]">Local client work</p>
             <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d] sm:text-5xl">Built for Edmonton businesses whose customers can&apos;t wait.</h2>
           </div>
           <div className="grid gap-5">
@@ -121,13 +121,13 @@ export default function WebDevelopmentEdmonton() {
                 data-reveal={String((index % 2) + 1)}
                 key={project.name}
                 href={project.href}
-                className="group block border border-[#1f2a24] bg-[#fffaf2] shadow-[6px_6px_0_#ded4c6] transition-all duration-300 hover:-translate-y-1 hover:shadow-[14px_14px_0_#ded4c6]"
+                className="group block rounded-md border border-[#ddd4c5] bg-[#fffaf2] transition-all duration-300 hover:-translate-y-1 hover:border-[#1f2a24]"
               >
                 <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-2 lg:items-center">
                   <div>
                     <div className="flex flex-wrap items-center gap-3">
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#7b3f2f]">{project.type}</p>
-                      <span className="border border-[#d8cec0] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#536156]">
+                      <p className="text-sm font-semibold text-[#7b3f2f]">{project.type}</p>
+                      <span className="rounded-md border border-[#d6ccbc] px-3 py-1 text-xs font-semibold text-[#536156]">
                         {project.status}
                       </span>
                     </div>
@@ -135,7 +135,7 @@ export default function WebDevelopmentEdmonton() {
                     <p className="mt-4 max-w-2xl leading-7 text-[#536156]">{project.text}</p>
                     <div className="mt-6 flex flex-wrap gap-2">
                       {project.highlights.map((item) => (
-                        <span key={item} className="border border-[#d9d0c2] bg-[#fdf8ef] px-3 py-1.5 text-xs font-semibold text-[#18231d]">
+                        <span key={item} className="rounded-md border border-[#ddd4c5] bg-[#f6f1e8] px-3 py-1.5 text-xs font-semibold text-[#18231d]">
                           {item}
                         </span>
                       ))}
@@ -162,7 +162,7 @@ export default function WebDevelopmentEdmonton() {
       <section className="px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-7xl">
           <div data-reveal className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">Areas served</p>
+            <p className="text-sm font-semibold text-[#7b3f2f]">Areas served</p>
             <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[#18231d] sm:text-5xl">Serving Edmonton and the surrounding area.</h2>
             <p className="mt-5 text-lg leading-8 text-[#536156]">
               Booyaa works with home-services and local businesses across Edmonton and the greater capital region.
@@ -170,7 +170,7 @@ export default function WebDevelopmentEdmonton() {
           </div>
           <div className="mt-10 flex flex-wrap gap-2.5">
             {areasServed.map((area) => (
-              <span key={area} className="border border-[#d9d0c2] bg-[#fffaf2] px-4 py-2 text-sm font-semibold text-[#18231d]">
+              <span key={area} className="rounded-md border border-[#ddd4c5] bg-[#fffaf2] px-4 py-2 text-sm font-semibold text-[#18231d]">
                 {area}
               </span>
             ))}
@@ -181,11 +181,11 @@ export default function WebDevelopmentEdmonton() {
       <section className="bg-[#1f2a24] px-5 py-16 text-[#f6f1e8] sm:px-8">
         <div data-reveal className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d6a26f]">Your next Edmonton customer is searching right now</p>
+            <p className="text-sm font-semibold text-[#d6a26f]">Your next Edmonton customer is searching right now</p>
             <h2 className="mt-3 max-w-2xl text-4xl font-semibold tracking-tight">Let&apos;s build the website that wins that call.</h2>
           </div>
-          <ContactModal topic="15-minute intro call" source="Edmonton page closing CTA" variant="light">
-            Book a 15-minute call
+          <ContactModal source="Edmonton page closing CTA" variant="light">
+            Get a free quote
           </ContactModal>
         </div>
       </section>

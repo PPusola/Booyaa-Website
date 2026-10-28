@@ -3,6 +3,7 @@
 import { FormEvent, ReactNode, useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { reportLeadConversion } from "@/lib/gtag";
+import { CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/site";
 
 type ContactModalProps = {
   children: ReactNode;
@@ -15,11 +16,22 @@ type ContactModalProps = {
 type SubmitState = "idle" | "sending" | "success" | "error";
 
 const inputClass =
-  "w-full border border-[#d8cec0] bg-[#fffaf2] px-4 py-3 text-sm text-[#1f2a24] outline-none transition placeholder:text-[#8a958c] focus:border-[#1f2a24]";
+  "w-full rounded-md border border-[#d6ccbc] bg-[#fffaf2] px-4 py-3 text-sm text-[#1f2a24] outline-none transition placeholder:text-[#9aa39c] focus:border-[#1f2a24] focus:ring-4 focus:ring-[#1f2a24]/5";
+
+const labelClass = "mb-1.5 block text-sm font-medium text-[#1f2a24]";
+
+const fileInputClass =
+  "mt-3 block w-full text-sm text-[#536156] file:mr-4 file:rounded-md file:border-0 file:bg-[#1f2a24] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white";
+
+const closeButtonClass =
+  "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md border border-[#d6ccbc] px-5 py-3 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]";
+
+const submitButtonClass =
+  "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-[#1f2a24] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#7b3f2f] disabled:cursor-not-allowed disabled:opacity-60";
 
 export function ContactModal({
   children,
-  topic = "Project inquiry",
+  topic = "Free quote request",
   source = "Website",
   variant = "primary",
   mode = "quote",
@@ -29,15 +41,13 @@ export function ContactModal({
   const [message, setMessage] = useState("");
   const [mounted, setMounted] = useState(false);
 
-  // Every variant carries a 1px border, including the solid one, so a primary
-  // button lines up edge-for-edge with the outlined buttons it sits beside.
   const buttonClass =
     variant === "primary"
-      ? "inline-flex items-center justify-center border border-[#1f2a24] bg-[#1f2a24] px-5 py-2.5 text-sm font-semibold text-[#f6f1e8] transition hover:border-[#7b3f2f] hover:bg-[#7b3f2f]"
+      ? "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-[#1f2a24] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#7b3f2f]"
       : variant === "secondary"
-        ? "inline-flex items-center justify-center border border-[#b8ad9d] px-5 py-2.5 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
+        ? "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md border border-[#d6ccbc] bg-[#fffaf2] px-6 py-3 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
         : variant === "light"
-          ? "inline-flex items-center justify-center border border-[#f6f1e8] px-5 py-2.5 text-sm font-semibold text-[#f6f1e8] transition hover:bg-[#f6f1e8] hover:text-[#1f2a24]"
+          ? "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-[#fffaf2] px-6 py-3 text-sm font-semibold text-[#1f2a24] transition hover:bg-[#efe8dc]"
           : "font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4 transition hover:text-[#7b3f2f]";
 
   const closeModal = useCallback(() => {
@@ -112,132 +122,130 @@ export function ContactModal({
     }
   }
 
+  const statusMessage = message ? (
+    <p
+      className={`rounded-md border p-3 text-sm ${
+        state === "success" ? "border-[#bfd3bf] bg-[#f3f8f3] text-[#2f5f38]" : "border-[#e5c3b7] bg-[#fdf5f2] text-[#7b3f2f]"
+      }`}
+    >
+      {message}
+    </p>
+  ) : null;
+
   const modal = open ? (
     <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#1f2a24]/55 px-4 py-6 backdrop-blur-sm"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#1f2a24]/50 px-4 py-6 backdrop-blur-sm"
           onMouseDown={closeModal}
         >
           <div
-            className="relative flex max-h-[82dvh] w-full max-w-2xl flex-col overflow-hidden border-2 border-[#1f2a24] bg-[#f6f1e8] shadow-[0_28px_90px_rgba(31,42,36,0.35),16px_16px_0_rgba(31,42,36,0.2)]"
+            className="relative flex max-h-[88dvh] w-full max-w-xl flex-col overflow-hidden rounded-md bg-[#fffaf2] shadow-[0_30px_90px_rgba(31,42,36,0.3)]"
             onMouseDown={(event) => event.stopPropagation()}
           >
             <button
               type="button"
               onClick={closeModal}
-              className="absolute right-4 top-4 z-20 inline-flex h-11 w-11 items-center justify-center border border-[#1f2a24] bg-[#1f2a24] text-[#f6f1e8] shadow-[4px_4px_0_#ded4c6] transition hover:bg-[#7b3f2f]"
+              className="absolute right-4 top-4 z-20 inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#efe8dc] text-[#1f2a24] transition hover:bg-[#e6ddcd]"
               aria-label="Close contact form"
               title="Close"
             >
-              <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6 6 18" />
               </svg>
             </button>
 
-            <div className="border-b border-[#d9d0c2] px-5 py-4 pr-20">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7b3f2f]">{topic}</p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#18231d]">
-                {mode === "quote" ? "Book a 15-minute call" : "Send a message"}
+            <div className="px-6 pb-2 pr-16 pt-6 sm:px-8 sm:pt-8">
+              <h2 className="text-2xl font-semibold tracking-tight text-[#18231d]">
+                {mode === "quote" ? "Get a free quote" : "Send a message"}
               </h2>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-[#536156]">
+              <p className="mt-2 text-sm leading-6 text-[#536156]">
                 {mode === "quote"
-                  ? "Tell me a little about your business and I will reach out within one business day to set up a free 15-minute call. No obligation, no pressure."
-                  : "Share the project, question, or reference details and I will get back to you."}
+                  ? "Tell me a little about your business. I reply within one business day with a clear scope and price. No obligation."
+                  : "Questions, support, or anything else. I usually reply within 24 to 48 hours."}
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="min-h-0 overflow-y-auto bg-[#f6f1e8] p-5 sm:p-6">
+            <form onSubmit={handleSubmit} className="min-h-0 overflow-y-auto px-6 pb-6 pt-4 sm:px-8 sm:pb-8">
               {mode === "quote" ? (
-                <div className="mx-auto max-w-2xl space-y-5">
+                <div className="space-y-4">
                   <div className="grid gap-4 sm:grid-cols-2">
                     <label className="block">
-                      <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#536156]">Name</span>
-                      <input className={inputClass} name="name" required placeholder="Your name" />
+                      <span className={labelClass}>Name</span>
+                      <input className={inputClass} name="name" required autoComplete="name" placeholder="Your name" />
                     </label>
                     <label className="block">
-                      <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#536156]">Email</span>
-                      <input className={inputClass} name="email" type="email" required placeholder="you@example.com" />
-                    </label>
-                  </div>
-
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <label className="block">
-                      <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#536156]">Phone (optional)</span>
-                      <input className={inputClass} name="phone" type="tel" placeholder="Best number to reach you" />
-                    </label>
-                    <label className="block">
-                      <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#536156]">Business name</span>
-                      <input className={inputClass} name="project" placeholder="Your business" />
+                      <span className={labelClass}>Email</span>
+                      <input className={inputClass} name="email" type="email" required autoComplete="email" placeholder="you@example.com" />
                     </label>
                   </div>
 
                   <label className="block">
-                    <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#536156]">What does your business do?</span>
+                    <span className={labelClass}>What do you need?</span>
                     <textarea
-                      className={`${inputClass} min-h-32 resize-y`}
+                      className={`${inputClass} min-h-28 resize-y`}
                       name="message"
                       required
-                      placeholder="A few sentences about your business, your current website if you have one, and where your customers come from today."
+                      placeholder="What your business does, and what you want from your website."
                     />
                   </label>
 
-                  <label className="block border border-[#d9d0c2] bg-[#fffaf2] p-4">
-                    <span className="block text-sm font-semibold text-[#18231d]">Optional reference</span>
-                    <span className="mt-1 block text-sm leading-6 text-[#536156]">
-                      A screenshot of your current site or anything else useful. JPG, PNG, WebP, or PDF up to 5 MB.
-                    </span>
-                    <input
-                      className="mt-4 block w-full text-sm text-[#536156] file:mr-4 file:border-0 file:bg-[#1f2a24] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-[#f6f1e8]"
-                      type="file"
-                      name="attachment"
-                      accept="image/png,image/jpeg,image/webp,application/pdf"
-                    />
-                  </label>
-
-                  {message && (
-                    <p className={`border p-3 text-sm ${state === "success" ? "border-[#8fa58f] text-[#2f5f38]" : "border-[#c8917e] text-[#7b3f2f]"}`}>
-                      {message}
-                    </p>
-                  )}
-
-                  <div className="flex flex-col gap-3 border-t border-[#d9d0c2] pt-5 sm:flex-row sm:items-center sm:justify-between">
-                    <p className="text-sm leading-6 text-[#536156]">Sends securely to Booyaa. I reply within one business day.</p>
-                    <div className="flex gap-3">
-                      <button
-                        type="button"
-                        onClick={closeModal}
-                        className="inline-flex items-center justify-center border border-[#b8ad9d] px-5 py-3 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
-                      >
-                        Close
-                      </button>
-                      <button
-                        type="submit"
-                        disabled={state === "sending"}
-                        className="inline-flex items-center justify-center bg-[#1f2a24] px-5 py-3 text-sm font-semibold text-[#f6f1e8] transition hover:bg-[#7b3f2f] disabled:cursor-not-allowed disabled:opacity-60"
-                      >
-                        {state === "sending" ? "Sending..." : "Request the call"}
-                      </button>
+                  <details className="group rounded-md border border-[#ddd4c5] bg-[#f6f1e8] px-4 py-3">
+                    <summary className="cursor-pointer list-none text-sm font-medium text-[#536156] transition hover:text-[#1f2a24]">
+                      <span className="mr-1.5 inline-block transition-transform group-open:rotate-90" aria-hidden="true">&rsaquo;</span>
+                      Add more details (optional)
+                    </summary>
+                    <div className="mt-4 space-y-4">
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <label className="block">
+                          <span className={labelClass}>Phone</span>
+                          <input className={inputClass} name="phone" type="tel" autoComplete="tel" placeholder="Best number to reach you" />
+                        </label>
+                        <label className="block">
+                          <span className={labelClass}>Business name</span>
+                          <input className={inputClass} name="project" autoComplete="organization" placeholder="Your business" />
+                        </label>
+                      </div>
+                      <label className="block">
+                        <span className={labelClass}>Reference file</span>
+                        <span className="block text-sm text-[#536156]">A screenshot of your current site or anything useful. JPG, PNG, WebP, or PDF up to 5 MB.</span>
+                        <input
+                          className={fileInputClass}
+                          type="file"
+                          name="attachment"
+                          accept="image/png,image/jpeg,image/webp,application/pdf"
+                        />
+                      </label>
                     </div>
+                  </details>
+
+                  {statusMessage}
+
+                  <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="text-sm leading-6 text-[#536156]">
+                      Prefer email?{" "}
+                      <a href={CONTACT_MAILTO} className="font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4 hover:text-[#7b3f2f]">
+                        {CONTACT_EMAIL}
+                      </a>
+                    </p>
+                    <button type="submit" disabled={state === "sending"} className={submitButtonClass}>
+                      {state === "sending" ? "Sending..." : "Send request"}
+                    </button>
                   </div>
                 </div>
               ) : (
-                <div className="mx-auto max-w-2xl space-y-5">
-                  <div className="border border-[#d9d0c2] bg-[#fffaf2] p-4">
-                    <p className="text-sm font-semibold text-[#18231d]">I usually reply within 24-48 hours.</p>
-                    <p className="mt-1 text-sm leading-6 text-[#536156]">Use this for questions, support, partnerships, existing project updates, or quick references.</p>
-                  </div>
+                <div className="space-y-4">
                   <div className="grid gap-4 sm:grid-cols-2">
                     <label className="block">
-                      <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#536156]">Name</span>
-                      <input className={inputClass} name="name" required placeholder="Your name" />
+                      <span className={labelClass}>Name</span>
+                      <input className={inputClass} name="name" required autoComplete="name" placeholder="Your name" />
                     </label>
                     <label className="block">
-                      <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#536156]">Email</span>
-                      <input className={inputClass} name="email" type="email" required placeholder="you@example.com" />
+                      <span className={labelClass}>Email</span>
+                      <input className={inputClass} name="email" type="email" required autoComplete="email" placeholder="you@example.com" />
                     </label>
                   </div>
 
                   <label className="block">
-                    <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#536156]">Purpose</span>
+                    <span className={labelClass}>Purpose</span>
                     <select className={inputClass} name="purpose" defaultValue="General question">
                       <option>General question</option>
                       <option>Support</option>
@@ -248,59 +256,40 @@ export function ContactModal({
                   </label>
 
                   <label className="block">
-                    <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#536156]">Project or question</span>
-                    <input className={inputClass} name="project" placeholder="What is this about?" />
-                  </label>
-
-                  <label className="block">
-                    <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#536156]">Message</span>
+                    <span className={labelClass}>Message</span>
                     <textarea
-                      className={`${inputClass} min-h-36 resize-y`}
+                      className={`${inputClass} min-h-32 resize-y`}
                       name="message"
                       required
                       placeholder="Send the question, project context, or anything else I should know."
                     />
                   </label>
 
-                  <label className="block border border-[#d9d0c2] bg-[#fffaf2] p-4">
-                    <span className="block text-sm font-semibold text-[#18231d]">Optional reference image</span>
-                    <span className="mt-1 block text-sm leading-6 text-[#536156]">
-                      Upload one optional JPG, PNG, WebP, or PDF up to 5 MB.
-                    </span>
+                  <label className="block rounded-md border border-[#ddd4c5] bg-[#f6f1e8] p-4">
+                    <span className="block text-sm font-medium text-[#1f2a24]">Reference file (optional)</span>
+                    <span className="mt-1 block text-sm text-[#536156]">JPG, PNG, WebP, or PDF up to 5 MB.</span>
                     <input
-                      className="mt-4 block w-full text-sm text-[#536156] file:mr-4 file:border-0 file:bg-[#1f2a24] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-[#f6f1e8]"
+                      className={fileInputClass}
                       type="file"
                       name="attachment"
                       accept="image/png,image/jpeg,image/webp,application/pdf"
                     />
                   </label>
 
-                  {message && (
-                    <p className={`border p-3 text-sm ${state === "success" ? "border-[#8fa58f] text-[#2f5f38]" : "border-[#c8917e] text-[#7b3f2f]"}`}>
-                      {message}
-                    </p>
-                  )}
+                  {statusMessage}
 
-                  <div className="flex flex-col gap-3 border-t border-[#d9d0c2] pt-5 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="text-sm leading-6 text-[#536156]">
-                      <p>Sends securely to Booyaa.</p>
-                      <p>
-                        <a className="font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4" href="https://github.com/PPusola" target="_blank" rel="noopener noreferrer">GitHub</a>
-                      </p>
-                    </div>
+                  <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="text-sm leading-6 text-[#536156]">
+                      Or email{" "}
+                      <a href={CONTACT_MAILTO} className="font-semibold text-[#1f2a24] underline decoration-[#b8ad9d] underline-offset-4 hover:text-[#7b3f2f]">
+                        {CONTACT_EMAIL}
+                      </a>
+                    </p>
                     <div className="flex gap-3">
-                      <button
-                        type="button"
-                        onClick={closeModal}
-                        className="inline-flex items-center justify-center border border-[#b8ad9d] px-5 py-3 text-sm font-semibold text-[#1f2a24] transition hover:border-[#1f2a24]"
-                      >
+                      <button type="button" onClick={closeModal} className={closeButtonClass}>
                         Close
                       </button>
-                      <button
-                        type="submit"
-                        disabled={state === "sending"}
-                        className="inline-flex items-center justify-center bg-[#1f2a24] px-5 py-3 text-sm font-semibold text-[#f6f1e8] transition hover:bg-[#7b3f2f] disabled:cursor-not-allowed disabled:opacity-60"
-                      >
+                      <button type="submit" disabled={state === "sending"} className={submitButtonClass}>
                         {state === "sending" ? "Sending..." : "Send message"}
                       </button>
                     </div>
